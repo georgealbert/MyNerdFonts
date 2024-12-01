@@ -56,8 +56,8 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
 | 2172352  | 12 1 21:00  | IosevkaTermSs12-Regular.ttf                                        | 原版英文字体                    |
 | 17658148 | 12 1 13:41  | FantasqueSansMono Nerd Font Mono + LXGW WenKai.ttf                 | 合并文楷字体                    |
 | 11693968 | 12 1 14:03  | LXGWWenKaiMonoLite-Regular.ttf                                     | 未合并英文字体，v1.501 24/10/10 |
-| 13639020 | 12 1 14:35  | FantasqueSansNerd_v3.3.0-LXGWLite_v1.501.ttf                       | 行距较小                        |
+| 13639020 | 12 1 14:35  | FantasqueSansNerd_v3.3.0-LXGWLite_v1.501.ttf                       | 推荐，行距大一些                |
 | 18029692 | 12 1 10:07  | SarasaTermAlbertSCNerd-Regular.ttf                                 | 推荐                            |
-| 13444980 | 12 1 17:35  | FantasqueSansMonoNerdFontMono_v2.3.0-LXGWWenKaiMonoLite_v1.501.ttf | 推荐                            |
+| 13444980 | 12 1 17:35  | FantasqueSansMonoNerdFontMono_v2.3.0-LXGWWenKaiMonoLite_v1.501.ttf | 推荐，行距小                    |
 | 15357896 | 12 1 20:39  | IosevkaTermSS12+LXGWWenKaiMonoLiteNerdFont-Regular.ttf             | 推荐                            |
 | 22914768 | 12 1 21:05  | IosevkaTermSS12+LXGWWenKaiMonoNerdFont-Regular.ttf                 | 推荐                            |
