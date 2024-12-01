@@ -21,7 +21,19 @@
 
 ## IosevkaTermSS12定制 + LXGW WenKai Mono Lite Regular
 
-* 缺点：和`Fantasque Sans Mono`比起来，显示的行数少了10行左右，行距较大。
+* 缺点：和`Fantasque Sans Mono`比起来，显示的行数少了10行左右，行距较大。但是可以调整Iosevka的行距，就和 Fantasque Sans Mono 一样了。
+
+* IosevkaTermSS12 + LXGW WenKai Mono Lite size 16
+  + leading=1200, 52行
+  + leading=1000，60行，字太挤了。比Fantasque Sans Mono能多显示一行左右，太窄了。
+  + leading=1080, 56行，比较合适，已经和FantasqueSansM差不多了。括号需要改小一点，但是好像几个选项都是一个高度，最好不要低于1050。
+  + FantasqueSansMono Nerd Font Mono + LXGW WenKai，size 16，不到60行
+  + FantasqueSansM Nerd Font Mono + LXGW WenKai Mono Lite，size 16，58行
+
+  ```sh
+  vim Iosevka/params/parameters.toml
+  leading = 1000
+  ```
 
 使用[`Warcraft-Font-Merger`](https://github.com/nowar-fonts/Warcraft-Font-Merger)进行合并。
 
