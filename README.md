@@ -26,6 +26,8 @@
 
 使用`Sarasa-Gothic`进行制作。将`Sarasa-Gothic/sources/IosevkaNTerm/IosevkaNTerm-Regular.ttf`等文件替换成自己定制的`IosevkaTermSS12`字体。
 
+不要用[`Warcraft-Font-Merger`](https://github.com/nowar-fonts/Warcraft-Font-Merger)进行合并，不好控制字符数，建议在生成字体后再用`font-patcher`增加Nerd字体。
+
 > 需要用[font-patcher](https://github.com/ryanoasis/nerd-fonts)，增加Nerd Font。如果字符超过65535个，可以去掉一部分`material icon`。
 
 ## 说明
