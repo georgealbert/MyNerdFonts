@@ -28,6 +28,10 @@
 
 不要用[`Warcraft-Font-Merger`](https://github.com/nowar-fonts/Warcraft-Font-Merger)进行合并，不好控制字符数，建议在生成字体后再用`font-patcher`增加Nerd字体。
 
+```sh
+font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
+```
+
 > 需要用[font-patcher](https://github.com/ryanoasis/nerd-fonts)，增加Nerd Font。如果字符超过65535个，可以去掉一部分`material icon`。
 
 ## 说明
@@ -50,6 +54,7 @@
 | 17658148 | 12 1 13:41  | FantasqueSansMono Nerd Font Mono + LXGW WenKai.ttf                 | 合并文楷字体                    |
 | 11693968 | 12 1 14:03  | LXGWWenKaiMonoLite-Regular.ttf                                     | 未合并英文字体，v1.501 24/10/10 |
 | 13639020 | 12 1 14:35  | FantasqueSansNerd_v3.3.0-LXGWLite_v1.501.ttf                       | 行距较小                        |
-| 12091332 | 12 1 14:03  | IosevkaTermSS12 + LXGW WenKai Mono Lite Regular.ttf                | 推荐                            |
+| 12091332 | 12 1 14:03  | IosevkaTermSS12 + LXGW WenKai Mono Lite Regular.ttf                | 未合并Nerd Font                 |
 | 18029692 | 12 1 10:07  | SarasaTermAlbertSCNerd-Regular.ttf                                 | 推荐                            |
 | 13444980 | 12 1 17:35  | FantasqueSansMonoNerdFontMono_v2.3.0-LXGWWenKaiMonoLite_v1.501.ttf | 推荐                            |
+| 14871440 | 12 1 18:12  | IosevkaTermSS12+LXGWWenKaiMonoLiteNerdFont-Regular.ttf             | 推荐                            |
