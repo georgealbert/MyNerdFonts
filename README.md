@@ -26,10 +26,16 @@
 
 使用`Sarasa-Gothic`进行制作。将`Sarasa-Gothic/sources/IosevkaNTerm/IosevkaNTerm-Regular.ttf`等文件替换成自己定制的`IosevkaTermSS12`字体。
 
+> 需要用[font-patcher](https://github.com/ryanoasis/nerd-fonts)，增加Nerd Font。如果字符超过65535个，可以去掉一部分`material icon`。
+
 ## 说明
 1. `Iosevka`目录是定制的Iosevka Term Regular字体。
     在[Iosevka Customer](https://typeof.net/Iosevka/customizer)中，将`Iosevka`目录中的文件贴入，选择喜欢的字符。
-2. `Sarasa`目录是更纱黑字体，只build `Term SC Regular`字体，只能build出unhintted的，autohintted的字体在build时，分析的时间太长了，跑不出来。
+    * SS05：FiraCode
+    * SS12：UbuntuMono
+    其实定制以后，这2个基本是一样的。
+
+2. `Sarasa`目录是更纱黑字体，只build `Term SC Regular`字体，只能build出`Unhinted`的，`autohinted`的字体在build时，分析的时间太长了，跑不出来。
 
 3. 用到的字体
 
