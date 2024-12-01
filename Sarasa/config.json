@@ -1,0 +1,156 @@
+{
+	"buildOptions": {},
+	"familyOrder": ["Term"],
+	"families": {
+		"Gothic": {
+			"isGothic": true,
+			"latinGroup": "Inter",
+			"naming": {
+				"en_US": "Sarasa Gothic",
+				"zh_CN": "更纱黑体",
+				"zh_TW": "更紗黑體",
+				"zh_HK": "更紗黑體",
+				"ja_JP": "更紗ゴシック",
+				"ko_KR": "사라사 고딕"
+			}
+		},
+		"Term": {
+			"isMono": true,
+			"isTerm": true,
+			"latinGroup": "IosevkaNTerm",
+			"naming": {
+				"en_US": "Sarasa Term",
+				"zh_CN": "Sarasa Term",
+				"zh_TW": "Sarasa Term",
+				"zh_HK": "Sarasa Term",
+				"ja_JP": "Sarasa Term",
+				"ko_KR": "Sarasa Term"
+			}
+		}
+	},
+	"styleOrder": [
+		"Regular"
+	],
+	"latinGroups": {
+		"Inter": {
+			"isCff": false,
+			"bakeFeatures": [{ "tag": "ss03" }, { "tag": "cv10" }],
+			"dropFeatures": [
+				"cv01",
+				"cv02",
+				"cv03",
+				"cv04",
+				"cv05",
+				"cv06",
+				"cv07",
+				"cv08",
+				"cv09",
+				"cv10",
+				"cv11",
+				"cv12",
+				"cv13",
+				"ss01",
+				"ss02",
+				"ss03",
+				"ss04",
+				"ss05",
+				"ss06",
+				"ss07",
+				"ss08"
+			]
+		}
+	},
+	"styles": {
+		"Regular": {
+			"name": "Regular"
+		},
+		"Italic": {
+			"name": "Italic",
+			"uprightStyleMap": "Regular"
+		},
+		"Bold": {
+			"name": "Bold"
+		},
+		"BoldItalic": {
+			"name": "Bold Italic",
+			"uprightStyleMap": "Bold"
+		}
+	},
+	"subfamilyOrder": ["SC"],
+	"os2encodings": {
+		"J": {
+			"gbk": false,
+			"big5": false,
+			"jis": true,
+			"korean": false
+		},
+		"SC": {
+			"gbk": true,
+			"big5": false,
+			"jis": false,
+			"korean": false
+		},
+		"TC": {
+			"gbk": false,
+			"big5": true,
+			"jis": false,
+			"korean": false
+		},
+		"HC": {
+			"gbk": false,
+			"big5": true,
+			"jis": false,
+			"korean": false
+		},
+		"CL": {
+			"gbk": false,
+			"big5": true,
+			"jis": false,
+			"korean": false
+		},
+		"K": {
+			"gbk": false,
+			"big5": false,
+			"jis": false,
+			"korean": true
+		}
+	},
+	"nameTupleSelector": {
+		"J": ["en_US", "ja_JP"],
+		"K": ["en_US", "ko_KR"],
+		"SC": ["en_US", "zh_CN"],
+		"TC": ["en_US", "zh_TW"],
+		"HC": ["en_US", "zh_HK"],
+		"CL": ["en_US", "zh_TW"]
+	},
+	"copyright": "Copyright (c) 2015-2024, Renzhi Li (aka. Belleve Invis, belleve@typeof.net). Portions Copyright (c) 2016-2020 The Inter Project Authors. Portions Copyright (c) 2014, 2015 Adobe Systems Incorporated (http://www.adobe.com/). Portions Copyright (c) 2012 Google Inc.",
+	"shsSourceMap": {
+		"defaultRegion": "SourceHanSans",
+		"region": {
+			"J": "SourceHanSans",
+			"K": "SourceHanSansK",
+			"CL": "SourceHanSansK",
+			"SC": "SourceHanSansSC",
+			"TC": "SourceHanSansTC",
+			"HC": "SourceHanSansHC",
+			"J-HW": "SourceHanSansHW",
+			"K-HW": "SourceHanSansHWK",
+			"CL-HW": "SourceHanSansHWK",
+			"SC-HW": "SourceHanSansHWSC",
+			"TC-HW": "SourceHanSansHWTC",
+			"HC-HW": "SourceHanSansHWHC"
+		},
+		"styleMap": {
+			"SemiBold": "Medium"
+		},
+		"classicalRegion": "CL",
+		"classicalOverridePrefix": "ShangguSansTC",
+		"classicalOverrideSuffixMap": {
+			"ExtraLight": "ExtraLight-subset",
+			"Light": "Light-subset",
+			"Regular": "Regular-subset",
+			"SemiBold": "Medium-subset",
+			"Bold": "Bold-subset"
+		}
+	}
+}
