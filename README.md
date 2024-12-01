@@ -53,14 +53,14 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
 
 | 大小     | 日期        | 字体                                                               | 说明                                        |
 |----------|-------------|--------------------------------------------------------------------|---------------------------------------------|
-| 2231612  | 4 3 2023    | Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf            | 原版英文字体，Nerd Fonts 2.3.0，行距较小    |
+| 2231612  | 4 3 2023    | Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf            | 原版英文字体，Nerd Fonts 2.3.3，行距较小    |
 | 2172352  | 12 1 21:00  | IosevkaTermSs12-Regular.ttf                                        | 原版英文字体                                |
 | 2379960  | 11 18 08:10 | FantasqueSansMNerdFontMono-Regular.ttf                             | 原版英文字体，Nerd Fonts 3.3.0，行距较大    |
 | 14078844 | 11 29 23:54 | FantasqueSansMonoLXGWLite-Regular-20241129.ttf                     | 最早用fontforge手工合并的，中英文对齐有问题 |
 | 17658148 | 12 1 13:41  | FantasqueSansMono Nerd Font Mono + LXGW WenKai.ttf                 | 合并文楷字体                                |
 | 11693968 | 12 1 14:03  | LXGWWenKaiMonoLite-Regular.ttf                                     | 未合并英文字体，v1.501 24/10/10             |
 | 18029692 | 12 1 10:07  | SarasaTermAlbertSCNerd-Regular.ttf                                 | 推荐指数：1                                 |
-| 13639020 | 12 1 14:35  | FantasqueSansNerd_v3.3.0-LXGWLite_v1.501.ttf                       | 推荐指数：5，行距大一些                     |
+| 13639020 | 12 1 14:35  | FantasqueSansNerd_v3.3.0-LXGWLite_v1.501.ttf                       | 推荐指数：`5`，行距大一些                   |
 | 13444980 | 12 1 17:35  | FantasqueSansMonoNerdFontMono_v2.3.0-LXGWWenKaiMonoLite_v1.501.ttf | 推荐指数：4，行距小                         |
-| 15357896 | 12 1 20:39  | IosevkaTermSS12+LXGWWenKaiMonoLiteNerdFont-Regular.ttf             | 推荐指数：4                                 |
+| 15357896 | 12 1 20:39  | IosevkaTermSS12+LXGWWenKaiMonoLiteNerdFont-Regular.ttf             | 推荐指数：`4`                               |
 | 22914768 | 12 1 21:05  | IosevkaTermSS12+LXGWWenKaiMonoNerdFont-Regular.ttf                 | 推荐指数：4                                 |
