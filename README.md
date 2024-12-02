@@ -72,6 +72,12 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
 
 # 发布的字体
 
+## 2024.12.02
+| 大小     | 日期             | 字体                                               | 说明                                                                                                                            |
+|----------|------------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| 16791140 | 2024-12-02 19:37 | SarasaTermAlbertSCNerd-Regular-LineHeight-1080.ttf | 推荐指数：`5`。调整Iosevka字体行距为1080，更纱黑在build时是按latin字体的大小来生成字体大小的                                    |
+| 14871528 | 2024-12-02 19:41 | SarasaTermSC-FantaqueSans-Nerd_Font-Regular.ttf    | 推荐指数：`3`。中文字体更纱黑合并英文字体FantasqueSans，由于FantasqueSans英文字体的行距过小，光标会覆盖不完部分中文字体，不好看 |
+
 ## 2024.12.01
 | 大小     | 日期             | 字体                                                               | 说明                                           |
 |----------|------------------|--------------------------------------------------------------------|------------------------------------------------|
@@ -82,15 +88,7 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
 | 17658148 | 2024-12-01 13:41 | FantasqueSansMono Nerd Font Mono + LXGW WenKai.ttf                 | 合并文楷字体                                   |
 | 11693968 | 2024-12-01 14:03 | LXGWWenKaiMonoLite-Regular.ttf                                     | 未合并英文字体，v1.501 24/10/10                |
 | 18029692 | 2024-12-01 10:07 | SarasaTermAlbertSCNerd-Regular.ttf                                 | 推荐指数：3。喜欢更纱黑的选这个                |
-| 13639020 | 2024-12-01 14:35 | FantasqueSansNerd_v3.3.0-LXGWLite_v1.501.ttf                       | 推荐指数：`5`。行距大一些，比Iosevka多显示10行 |
 | 13444980 | 2024-12-01 17:35 | FantasqueSansMonoNerdFontMono_v2.3.0-LXGWWenKaiMonoLite_v1.501.ttf | 推荐指数：4，行距太小了                        |
-| 15357896 | 2024-12-01 20:39 | IosevkaTermSS12+LXGWWenKaiMonoLiteNerdFont-Regular.ttf             | 推荐指数：`4`。行距有点大，字形也很好看        |
 | 22914768 | 2024-12-01 21:05 | IosevkaTermSS12+LXGWWenKaiMonoNerdFont-Regular.ttf                 | 推荐指数：4                                    |
-
-## 2024.12.02
-| 大小     | 日期             | 字体                                               | 说明                                                                                                                              |
-|----------|------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| 16791140 | 2024-12-02 19:37 | SarasaTermAlbertSCNerd-Regular-LineHeight-1080.ttf | 推荐指数：`5`。调整Iosevka字体行距为1080，更纱黑在build时是按latin字体的大小来生成字体大小的                                      |
-| 14871528 | 2024-12-02 19:41 | SarasaTermSC-FantaqueSans-Nerd_Font-Regular.ttf    | 推荐指数：`3`。中文字体更纱黑和合并英文字体FantasqueSans，由于FantasqueSans英文字体的行距过小，光标会覆盖不完部分中文字体，不好看 |
-
-
+| 15357896 | 2024-12-01 20:39 | IosevkaTermSS12+LXGWWenKaiMonoLiteNerdFont-Regular.ttf             | 推荐指数：`4`。行距有点大，字形也很好看        |
+| 13639020 | 2024-12-01 14:35 | FantasqueSansNerd_v3.3.0-LXGWLite_v1.501.ttf                       | 推荐指数：`5`。行距大一些，比Iosevka多显示10行 |
