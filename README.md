@@ -61,7 +61,7 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
 
 2. `Sarasa`目录是更纱黑字体，只build `Term SC Regular`字体，只能build出`Unhinted`的，`autohinted`的字体在build时，分析的时间太长了，跑不出来。
 
-3. 用到的字体
+3. shell
   ```sh
   # linux
   TIME_STYLE="+%Y-%m-%d %H:%M%S" ls -ltr
@@ -70,6 +70,9 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
   ls -l -D "%Y-%m-%d %H:%M"
   ```
 
+# 发布的字体
+
+## 2024.12.01
 | 大小     | 日期             | 字体                                                               | 说明                                           |
 |----------|------------------|--------------------------------------------------------------------|------------------------------------------------|
 | 2231612  | 2023-04-03 12:40 | Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf            | 原版英文字体，Nerd Fonts 2.3.3，行距较小       |
@@ -83,3 +86,11 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
 | 13444980 | 2024-12-01 17:35 | FantasqueSansMonoNerdFontMono_v2.3.0-LXGWWenKaiMonoLite_v1.501.ttf | 推荐指数：4，行距太小了                        |
 | 15357896 | 2024-12-01 20:39 | IosevkaTermSS12+LXGWWenKaiMonoLiteNerdFont-Regular.ttf             | 推荐指数：`4`。行距有点大，字形也很好看        |
 | 22914768 | 2024-12-01 21:05 | IosevkaTermSS12+LXGWWenKaiMonoNerdFont-Regular.ttf                 | 推荐指数：4                                    |
+
+## 2024.12.02
+| 大小     | 日期             | 字体                                               | 说明                                                                                                                              |
+|----------|------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| 16791140 | 2024-12-02 19:37 | SarasaTermAlbertSCNerd-Regular-LineHeight-1080.ttf | 推荐指数：`5`。调整Iosevka字体行距为1080，更纱黑在build时是按latin字体的大小来生成字体大小的                                      |
+| 14871528 | 2024-12-02 19:41 | SarasaTermSC-FantaqueSans-Nerd_Font-Regular.ttf    | 推荐指数：`3`。中文字体更纱黑和合并英文字体FantasqueSans，由于FantasqueSans英文字体的行距过小，光标会覆盖不完部分中文字体，不好看 |
+
+
