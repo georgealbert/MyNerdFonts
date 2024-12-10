@@ -743,7 +743,7 @@ class font_patcher:
         # FOR SARASA
         projectInfo = (
             # "Patched with '" + projectName + " Patcher' (https://github.com/ryanoasis/nerd-fonts)\n\n"
-            "Patched with 'Sarasa Term SC Nerd Patcher' (https://github.com/georgealbert/MyNerdFonts)\n\n"
+            "Patched with 'My Nerd Patcher' (https://github.com/georgealbert/MyNerdFonts)\n\n"
             "* Website: https://www.nerdfonts.com\n"
             "* Version: " + version + "\n"
             "* Development Website: https://github.com/ryanoasis/nerd-fonts\n"
@@ -1161,8 +1161,8 @@ class font_patcher:
             # {'Enabled': self.args.material,             'Name': "Material",                'Filename': "materialdesign/MaterialDesignIconsDesktop.ttf",  'Exact': True,  'SymStart': 0xF0001,'SymEnd': 0xF165C,'SrcStart': None,   'ScaleRules': MDI_SCALE_LIST,   'Attributes': SYM_ATTR_DEFAULT},
             {'Enabled': self.args.material,             'Name': "Material",                'Filename': "materialdesign/MaterialDesignIconsDesktop.ttf",  'Exact': True,  'SymStart': 0xF0001,'SymEnd': 0xF0553,'SrcStart': None,   'ScaleRules': MDI_SCALE_LIST,   'Attributes': SYM_ATTR_DEFAULT},
             {'Enabled': self.args.material,             'Name': "Material",                'Filename': "materialdesign/MaterialDesignIconsDesktop.ttf",  'Exact': True,  'SymStart': 0xF0565,'SymEnd': 0xF118E,'SrcStart': None,   'ScaleRules': MDI_SCALE_LIST,   'Attributes': SYM_ATTR_DEFAULT},
-            {'Enabled': self.args.material,             'Name': "Material",                'Filename': "materialdesign/MaterialDesignIconsDesktop.ttf",  'Exact': True,  'SymStart': 0xF119E,'SymEnd': 0xF165C,'SrcStart': None,   'ScaleRules': MDI_SCALE_LIST,   'Attributes': SYM_ATTR_DEFAULT},
-            {'Enabled': self.args.material,             'Name': "Material",                'Filename': "materialdesign/MaterialDesignIconsDesktop.ttf",  'Exact': True,  'SymStart': 0xF19E8,'SymEnd': 0xF19FD,'SrcStart': None,   'ScaleRules': MDI_SCALE_LIST,   'Attributes': SYM_ATTR_DEFAULT},
+            # {'Enabled': self.args.material,             'Name': "Material",                'Filename': "materialdesign/MaterialDesignIconsDesktop.ttf",  'Exact': True,  'SymStart': 0xF119E,'SymEnd': 0xF165C,'SrcStart': None,   'ScaleRules': MDI_SCALE_LIST,   'Attributes': SYM_ATTR_DEFAULT},
+            # {'Enabled': self.args.material,             'Name': "Material",                'Filename': "materialdesign/MaterialDesignIconsDesktop.ttf",  'Exact': True,  'SymStart': 0xF19E8,'SymEnd': 0xF19FD,'SrcStart': None,   'ScaleRules': MDI_SCALE_LIST,   'Attributes': SYM_ATTR_DEFAULT},
 
             {'Enabled': self.args.weather,              'Name': "Weather Icons",           'Filename': "weather-icons/weathericons-regular-webfont.ttf", 'Exact': False, 'SymStart': 0xF000, 'SymEnd': 0xF0EB, 'SrcStart': 0xE300, 'ScaleRules': WEATH_SCALE_LIST, 'Attributes': SYM_ATTR_DEFAULT},
             {'Enabled': self.args.fontlogos,            'Name': "Font Logos",              'Filename': "font-logos.ttf",                                 'Exact': True,  'SymStart': 0xF300, 'SymEnd': 0xF381, 'SrcStart': None,   'ScaleRules': None,             'Attributes': SYM_ATTR_DEFAULT},
@@ -2272,7 +2272,7 @@ from fontTools.ttLib import TTFont, newTable
 
 def post_fix(src_file, dst_file):
     dst_font = TTFont(dst_file, recalcBBoxes=False)
-    build_hdmx(dst_font)
+    # build_hdmx(dst_font)
     fix_isFixedPitch(dst_font)
 
     src_font = TTFont(src_file)
@@ -2283,6 +2283,7 @@ def post_fix(src_file, dst_file):
     dst_font.close()
 
 def build_hdmx(font):
+    """感觉没什么用，windows上中英文照样不能对齐"""
     headFlagInstructionsMayAlterAdvanceWidth = 0x0010
     sarasaHintPpemMin = 11
     sarasaHintPpemMax = 48

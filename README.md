@@ -17,7 +17,16 @@
   下载地址：https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FantasqueSansMono.tar.xz
 * 中文：LXGWWenKaiMonoLite-Regular v1.501 24/10/10
 
-使用[`Warcraft-Font-Merger`](https://github.com/nowar-fonts/Warcraft-Font-Merger)进行合并。
+在fontforge的图形界面进行字体合并，合并前需要把中文字体的全字大小调整到和英文字体的一样大。FantasqueSans是2048。
+
+nerd-fonts上编译好的`FantasqueSansMNerdFontMono-Regular.ttf`(v3.3.0 2024.10)配合`LXGW`和`HarmonyOS SC`，fontforge合并后的显示行数比较合适。
+
+也可以修改Fantasque的`build.py`后再`make`编译。
+```
+option('LargeLineHeight', 'Large Line Height', Line(1700, 448)),
+```
+
+不建议使用[`Warcraft-Font-Merger`](https://github.com/nowar-fonts/Warcraft-Font-Merger)进行合并，windows的emacs显示中文过宽，占2个中文字符的宽度。
 
 ## IosevkaTermSS12定制 + LXGW WenKai Mono Lite Regular
 
@@ -30,10 +39,6 @@
   + FantasqueSansMono Nerd Font Mono + LXGW WenKai，size 16，不到60行
   + FantasqueSansM Nerd Font Mono + LXGW WenKai Mono Lite，size 16，58行
 
-  ```sh
-  vim Iosevka/params/parameters.toml
-  leading = 1000
-  ```
 
 使用[`Warcraft-Font-Merger`](https://github.com/nowar-fonts/Warcraft-Font-Merger)进行合并。
 
@@ -52,12 +57,25 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
 
 > 需要用[font-patcher](https://github.com/ryanoasis/nerd-fonts)，增加Nerd Font。如果字符超过65535个，可以去掉一部分`material icon`。
 
+### 步骤
+1. 制作Iosevka字体
+2. 制作更纱黑体
+3. font-patcher制作nerd字体，字体名SarasaTermAlbertSCNerd-Regular.ttf
+
 ## 说明
 1. `Iosevka`目录是定制的Iosevka Term Regular字体。
     在[Iosevka Customer](https://typeof.net/Iosevka/customizer)中，将`Iosevka`目录中的文件贴入，选择喜欢的字符。
     * SS05：FiraCode
     * SS12：UbuntuMono
     其实定制以后，这2个基本是一样的。
+
+  ```sh
+  vim Iosevka/params/parameters.toml
+  leading = 1100
+  ```
+  1080和1100的line height，在macOS中，光标移动到字母“ qyg ”时不好看。在windows中emacs会直接截断字母的最下面一部分。不得不说，macOS的hidpi中的效果比windows好多了，同样的字体明显比windows清晰，英文字体也更粗一些。
+  1080显示56行。
+  1100显示55行。
 
 2. `Sarasa`目录是更纱黑字体，只build `Term SC Regular`字体，只能build出`Unhinted`的，`autohinted`的字体在build时，分析的时间太长了，跑不出来。
 
@@ -69,8 +87,34 @@ font-patcher --quiet --adjust-line-height --complete --careful your_font.ttf
   ls -l -D "%Y-%m-%d %H:%M:%S"
   ls -l -D "%Y-%m-%d %H:%M"
   ```
+  
+4. FantaqueSans编译
+   1. Build: fix range error for missing module 'past'#156 https://github.com/belluzj/fantasque-sans/pull/156/commits
+   2. 修改行高，从1750改为1850，正好可以和更纱黑体匹配，可以显示55行。
+      ```sh
+      vim fantasque-sans/Scripts/build.py
+
+         option('LargeLineHeight', 'Large Line Height', Line(1850, 498)),
+      ```
+      
+5. FiraCode编译
+   ```sh
+   ./script/build.sh --features "ss01,ss03,ss05,ss10,cv06,cv13,cv17,cv18,cv30,cv31" --family-name "Fira Code Albert" --weights "Regular,Retina"
+   ```
 
 # 发布的字体
+
+
+| 大小     | 日期             | 字体                                                 | 说明                                                          |
+|----------|------------------|------------------------------------------------------|---------------------------------------------------------------|
+| 16675368 | 2024-12-10 21:20 | SarasaTermSCNerdFont-Regular-w530-20241210-w1060.ttf | 推荐指数：`5`。Iosevka的宽度是530，更纱黑是1060，看起来好一些 |
+
+## 2024.12.09
+
+| 大小     | 日期             | 字体                                                                | 说明                                                                                 |
+|----------|------------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| 12922412 | 2024-12-09 20:44 | FantasqueSansMNF + LXGW Mono Lite-LH852-248-20241209-w1040-w520.ttf | 推荐指数：`5`。中文字符的高度比HarmonyOS的低一点点，光标正好覆盖住                   |
+| 9566764  | 2024-12-09 22:10 | FantasqueSansMNF + HarmonyOS-LH852-248-20241209-w1040-w520.ttf      | 这2个字体是真正的中英文等宽了，西文字符520，中文字符1040，有些中文字符比光标高一点点 |
 
 ## 2024.12.02
 | 大小     | 日期             | 字体                                               | 说明                                                                                                                            |
