@@ -2,49 +2,44 @@
 # coding=utf8
 
 import sys
-# import math
-# import getopt
 import argparse
 import logging
-from fontTools.ttLib import TTFont, newTable
+from fontTools.ttLib import TTFont
 
 
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 
 
-def print_table(table):
-    print(table, type(table))
-    for key,value in table.items():
-        print("[%s] = %s" % (key, value))
+def fix_width(src_file: str, width: int, line_position=0, line_thickness=0):
+    """修改AvgCharWidth和isFixedPitch，让程序能正确的识别是等宽字体，并且能以等宽字体来显示"""
+    src_font = TTFont(src_file, recalcBBoxes=False)
 
+    post = src_font["post"].__dict__
 
-def print_width(src_file: str):
-    font = TTFont(src_file)
-    print_table(font["head"].__dict__)
-    print_table(font["name"].__dict__)
-    # print_table(font["OS/2"].__dict__)
-    # print_table(font["OS/2"].panose.__dict__)
-    # print_table(font["hmtx"].__dict__)
-    # print_table(font["hdmx"].panose.__dict__)
-    logging.info("file xAvgCharWidth: %s" % font["OS/2"].xAvgCharWidth)
-
-    font.close()
-
-
-def fix_width(src_file: str, width: int):
-    font = TTFont(src_file, recalcBBoxes=False)
-
-    post = font["post"].__dict__
+    # 改为1后，vimr就能在等宽字体中找到了
     post["isFixedPitch"] = 1
 
-    logging.info("%s: change xAvgCharWidth from %d to %d" % (src_file, font["OS/2"].xAvgCharWidth, width))
-    font["OS/2"].xAvgCharWidth = width
+    logging.info("Fix xAvgCharWidth, %d -> %d" % (src_font["OS/2"].xAvgCharWidth, width))
 
-    font.save(src_file)
-    font.close()
+    # 设置为西文字体的宽度，设置后emacs可以中英文对齐了
+    src_font["OS/2"].xAvgCharWidth = width
+
+    old_position = post["underlinePosition"]
+    old_thickness = post["underlineThickness"]
+
+    if line_position != 0:
+        post["underlinePosition"] = line_position
+        print("fix post[\"underlinePosition\"], %d -> %d" % (old_position, post["underlinePosition"]))
+
+    if line_thickness != 0:
+        post["underlineThickness"] = line_thickness
+        print("fix post[\"underlineThickness\"] %d -> %d" % (old_thickness,post["underlineThickness"]))
+
+    src_font.save(src_file)
+    src_font.close()
 
 
-def check_char_width(src_file: str):
+def check_char_width(src_file: str, is_verbose: bool):
     """检查每个char的width
     FantasqueSansMNerdFont-Regular.ttf, upm: 2048, width: 1060, 比例 0.518，明显比FiraCode窄，FiraCode不好搭配中文
 
@@ -63,33 +58,38 @@ def check_char_width(src_file: str):
     /Users/albert/workspace/font/SarasaTermSC-FiraCode-Retina-Regular-LH1670-430-w1230.ttf 用sarasa合并后，英文宽度615，中文1000。
       把中文改为1230后，中文太宽了。  
     """
-
     font = TTFont(src_file)
 
     print("font[\"hhea\"].advanceWidthMax = %d" % font["hhea"].advanceWidthMax)
 
-    print("%s: xAvgCharWidth = %d" % (src_file, font["OS/2"].xAvgCharWidth))
+    print("font[\"OS/2\"].xAvgCharWidth = %d" % font["OS/2"].xAvgCharWidth)
 
+    # fonttools/blob/main/Lib/fontTools/cffLib/__init__.py
+    post = font["post"].__dict__
+    print("post[\"underlinePosition\"] = %d" % post["underlinePosition"])
+    print("post[\"underlineThickness\"] = %d" % post["underlineThickness"])
+    print("post[\"isFixedPitch\"] = %d" % post["isFixedPitch"])
+
+    chars = {}
+    
     for name in font.getGlyphOrder():
         glyph = font["glyf"][name]
         width, lsb = font["hmtx"][name]
-        # if width != match_width:
-        #     continue
-        # if glyph.numberOfContours == 0:
-        #     font["hmtx"][name] = (target_width, lsb)
-        #     continue
 
-        # delta = round((target_width - width) / 2)
-        # glyph.coordinates.translate((delta, 0))
-        # glyph.xMin, glyph.yMin, glyph.xMax, glyph.yMax = (
-        #     glyph.coordinates.calcIntBounds()
-        # )
-        # font["hmtx"][name] = (target_width, lsb + delta)
-        print("[%s], width: %s, lsb: %s" % (name, width, lsb))
+        chars[str(width)] = chars.get(str(width), 0) + 1
+        if is_verbose:
+            print("[%s], width: %s, lsb: %s" % (name, width, lsb))
+
+    sorted_values = sorted(chars.items(), key=lambda x: x[1])
+
+    # for key, value in sorted_values.items():
+    print("[char width]\t[count]")
+    for key, value in sorted_values:
+        print("%s\t\t%s" % (key, value))
+
     font.close()
 
 
-# def change_char_width(font: TTFont, match_width: int, target_width: int):
 def change_char_width(src_font: str, match_width: int, target_width: int):
     """ 只修改了中文的宽度，为什么中文是固定宽度的？
     if font_config.cn["narrow"]:
@@ -121,25 +121,24 @@ def change_char_width(src_font: str, match_width: int, target_width: int):
             print(e)
 
     target_font = src_font.split(".")[0] + "-w" + str(target_width) + ".ttf"
-    logging.info("target_font: %s" % target_font)
     font.save(target_font)
     font.close()
 
 
 if __name__ == '__main__':
-    # opts, args = getopt.getopt(sys.argv[1:], '-h-c:-m:-v', ['help', 'check=', 'm=', 'version'])
-    # print(opts)
-    # print(args)
-
     parser = argparse.ArgumentParser()
     # group = parser.add_mutually_exclusive_group(required=True)
+    # parser.add_argument('-c', '--check', type=str, help='check char width')
     parser.add_argument('-c', '--check', action='store_true', help='check char width')
+    parser.add_argument('-v', '--verbose', action='store_true', help='whether show char detail when check char width')
     parser.add_argument('-m', '--modify', action='store_true', help='modify char width')
     parser.add_argument('-o', '--origin-width', type=int, help='origin char width')
     parser.add_argument('-t', '--target-width', type=int, help='target char width')
-    parser.add_argument('-w', '--width', type=int, help='fix avg char width')
-    
-    parser.add_argument('filename', type=str, help='ttf file name')
+    parser.add_argument('-f', '--fix-width', type=int, help='fix ["OS/2"].xAvgCharWidth')
+    parser.add_argument('-l', '--line-position', type=int, help='fix ["OS/2"].underlinePosition')
+    parser.add_argument('-n', '--line-thickness', type=int, help='fix ["OS/2"].underlineThickness')
+
+    parser.add_argument('filename', type=str, help='filename of a ttf file')
 
     # group.add_argument('-c', '--check', type=str, help='check char width', action='check')
     # group.add_argument('-m', '--modify', type=str, help='modify char width', action='modify')
@@ -148,18 +147,18 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    # print(args)
+    # print("%s, filename: %s" % (args, args.filename))
 
-    if args.width is not None:
-        fix_width(args.filename, args.width)
+    if args.fix_width and args.line_position and args.line_thickness:
+        fix_width(args.filename, args.fix_width, args.line_position, args.line_thickness)
         sys.exit(0)
 
     if args.check:
         # check后直接退出
-        check_char_width(args.filename)
+        check_char_width(args.filename, args.verbose)
         sys.exit(0)
 
-    if args.modify is not None and args.origin_width is not None and args.target_width is not None:
+    if args.filename is not None and args.modify is not None and args.origin_width is not None and args.target_width is not None:
         change_char_width(args.filename, args.origin_width, args.target_width)
         sys.exit(0)
 
