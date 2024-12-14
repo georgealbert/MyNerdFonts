@@ -39,7 +39,7 @@ def fix_width(src_file: str, width: int, line_position=0, line_thickness=0):
     src_font.close()
 
 
-def check_char_width(src_file: str, is_verbose: bool):
+def get_font_info(src_file: str, is_verbose: bool):
     """检查每个char的width
     FantasqueSansMNerdFont-Regular.ttf, upm: 2048, width: 1060, 比例 0.518，明显比FiraCode窄，FiraCode不好搭配中文
 
@@ -129,16 +129,18 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # group = parser.add_mutually_exclusive_group(required=True)
     # parser.add_argument('-c', '--check', type=str, help='check char width')
-    parser.add_argument('-c', '--check', action='store_true', help='check char width')
-    parser.add_argument('-v', '--verbose', action='store_true', help='whether show char detail when check char width')
-    parser.add_argument('-m', '--modify', action='store_true', help='modify char width')
-    parser.add_argument('-o', '--origin-width', type=int, help='origin char width')
-    parser.add_argument('-t', '--target-width', type=int, help='target char width')
-    parser.add_argument('-f', '--fix-width', type=int, help='fix ["OS/2"].xAvgCharWidth')
-    parser.add_argument('-l', '--line-position', type=int, help='fix ["OS/2"].underlinePosition')
-    parser.add_argument('-n', '--line-thickness', type=int, help='fix ["OS/2"].underlineThickness')
+    parser.add_argument('-c', '--check', action='store_true', help='Get font info, width/underlineThickness/underlineThickness etc.')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Show char detail when get font info.')
 
-    parser.add_argument('filename', type=str, help='filename of a ttf file')
+    parser.add_argument('-m', '--modify', action='store_true', help='Modify char width.')
+    parser.add_argument('-o', '--origin-width', type=int, help='Origin char width.')
+    parser.add_argument('-t', '--target-width', type=int, help='Target char width.')
+
+    parser.add_argument('-f', '--fix-width', type=int, help='Fix ["OS/2"].xAvgCharWidth')
+    parser.add_argument('-l', '--line-position', default=0, type=int, help='Fix ["OS/2"].underlinePosition, default is 0, underlinePosition is not modified.')
+    parser.add_argument('-n', '--line-thickness', default=0, type=int, help='Fix ["OS/2"].underlineThickness, default is 0, underlineThickness is not modified.')
+
+    parser.add_argument('filename', type=str, help='Filename of a ttf font file.')
 
     # group.add_argument('-c', '--check', type=str, help='check char width', action='check')
     # group.add_argument('-m', '--modify', type=str, help='modify char width', action='modify')
@@ -155,7 +157,7 @@ if __name__ == '__main__':
 
     if args.check:
         # check后直接退出
-        check_char_width(args.filename, args.verbose)
+        get_font_info(args.filename, args.verbose)
         sys.exit(0)
 
     if args.filename is not None and args.modify is not None and args.origin_width is not None and args.target_width is not None:
