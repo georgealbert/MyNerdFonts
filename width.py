@@ -149,9 +149,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    # print("%s, filename: %s" % (args, args.filename))
+    print("%s, filename: %s" % (args, args.filename))
 
-    if args.fix_width and args.line_position and args.line_thickness:
+    if args.fix_width:
+        # print("fix_width")
         fix_width(args.filename, args.fix_width, args.line_position, args.line_thickness)
         sys.exit(0)
 
