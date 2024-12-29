@@ -10,7 +10,7 @@ from fontTools.ttLib import TTFont
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 
 
-def fix_width(src_file: str, width: int, line_position=0, line_thickness=0):
+def fix_width(src_file: str, width: int, line_position=0, line_thickness=0, advanceWidthMax=0):
     """修改AvgCharWidth和isFixedPitch，让程序能正确的识别是等宽字体，并且能以等宽字体来显示"""
     src_font = TTFont(src_file, recalcBBoxes=False)
 
@@ -24,8 +24,13 @@ def fix_width(src_file: str, width: int, line_position=0, line_thickness=0):
     # 设置为西文字体的宽度，设置后emacs可以中英文对齐了
     src_font["OS/2"].xAvgCharWidth = width
 
+    old_advanceWidthMax = src_font["hhea"].advanceWidthMax
     old_position = post["underlinePosition"]
     old_thickness = post["underlineThickness"]
+
+    if advanceWidthMax != 0:
+        src_font["hhea"].advanceWidthMax = advanceWidthMax
+        print("fix font[\"hhea\"].advanceWidthMax, %d -> %d" % (old_advanceWidthMax, src_font["hhea"].advanceWidthMax))
 
     if line_position != 0:
         post["underlinePosition"] = line_position
@@ -41,34 +46,58 @@ def fix_width(src_file: str, width: int, line_position=0, line_thickness=0):
 
 def get_font_info(src_file: str, is_verbose: bool):
     """检查每个char的width
-    FantasqueSansMNerdFont-Regular.ttf, upm: 2048, width: 1060, 比例 0.518，明显比FiraCode窄，FiraCode不好搭配中文
-
     gitee上chinese分支的默认宽度是1200，MapleMonoNF-Regular-2048.ttf 1228
 
-    /Users/albert/workspace/FiraCode/distr/ttf/Albert Fira Code/AlbertFiraCode-Regular-LH1670-430.ttf, upm: 1950, width: 1200, 比例 0.615
-
-    /Users/albert/workspace/maple-font/fonts/NF/MapleMono-NF-Regular.ttf 600
-
     /Users/albert/workspace/maple-font/fonts/NF/MapleMono-NF-Regular.ttf, upm: 1000, width: 600
-
-    LXGWWenKaiLite-Regular.ttf, upm: 1000, width: 1000
-
-    /Users/albert/Downloads/HarmonyOS_Sans_SC_Regular.ttf 原版，upm: 1000, width: 1000
 
     /Users/albert/workspace/font/SarasaTermSC-FiraCode-Retina-Regular-LH1670-430-w1230.ttf 用sarasa合并后，英文宽度615，中文1000。
       把中文改为1230后，中文太宽了。  
     """
     font = TTFont(src_file)
 
-    print("font[\"hhea\"].advanceWidthMax = %d" % font["hhea"].advanceWidthMax)
+    # print("font.keys(): %s" % font.keys())
 
-    print("font[\"OS/2\"].xAvgCharWidth = %d" % font["OS/2"].xAvgCharWidth)
+    # for k,v in font["name"].__dict__.items():
+    #     print("font[\"name\"].%s = %s" % (k, v))
+
+    # for k,v in font["head"].__dict__.items():
+    #     print("font[\"head\"].%s = %s" % (k, v))
+
+    # for k,v in font["hhea"].__dict__.items():
+    #     print("font[\"hhea\"].%s = %s" % (k, v))
+
+    # for k,v in font["OS/2"].__dict__.items():
+    #     print("font[\"OS/2\"].%s = %s" % (k, v))
+
+    # for k,v in font["post"].__dict__.items():
+    #     print("font[\"post\"].%s = %s" % (k, v))
+
+    print("[\"head\"].unitsPerEm = %d\n" % font["head"].unitsPerEm)
+
+    print("[\"OS/2\"].usWinAscent   = %d" % font["OS/2"].usWinAscent)
+    print("[\"OS/2\"].usWinDescent  = %d" % font["OS/2"].usWinDescent)
+    print("[\"hhea\"].ascent        = %d" % font["hhea"].ascent)
+    print("[\"hhea\"].descent       = %d" % font["hhea"].descent)
+    print("[\"OS/2\"].sTypoAscender = %d" % font["OS/2"].sTypoAscender)
+    print("[\"OS/2\"].sTypoDescender= %d" % font["OS/2"].sTypoDescender)
+    print("[\"OS/2\"].sTypoLineGap  = %d" % font["OS/2"].sTypoLineGap)
+    print("[\"hhea\"].lineGap       = %d" % font["hhea"].lineGap)
+    print("[\"OS/2\"].sCapHeight    = %d" % font["OS/2"].sCapHeight)
+    print("[\"OS/2\"].sxHeight      = %d" % font["OS/2"].sxHeight)
+
+    print("")
+
+    print("[\"hhea\"].advanceWidthMax = %d" % font["hhea"].advanceWidthMax)
+    print("[\"OS/2\"].xAvgCharWidth   = %d" % font["OS/2"].xAvgCharWidth)
+
+    print("")
 
     # fonttools/blob/main/Lib/fontTools/cffLib/__init__.py
-    post = font["post"].__dict__
-    print("post[\"underlinePosition\"] = %d" % post["underlinePosition"])
-    print("post[\"underlineThickness\"] = %d" % post["underlineThickness"])
-    print("post[\"isFixedPitch\"] = %d" % post["isFixedPitch"])
+    # post = font["post"].__dict__
+    # print("post[\"underlinePosition\"] = %d" % post["underlinePosition"])
+    print("[\"post\"].underlinePosition  = %d" % font["post"].underlinePosition)
+    print("[\"post\"].underlineThickness = %d" % font["post"].underlineThickness)
+    print("[\"post\"].isFixedPitch = %d" % font["post"].isFixedPitch)
 
     chars = {}
     
@@ -83,7 +112,7 @@ def get_font_info(src_file: str, is_verbose: bool):
     sorted_values = sorted(chars.items(), key=lambda x: x[1])
 
     # for key, value in sorted_values.items():
-    print("[char width]\t[count]")
+    print("\n[char width]\t[count]")
     for key, value in sorted_values:
         print("%s\t\t%s" % (key, value))
 
@@ -139,6 +168,7 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--fix-width', type=int, help='Fix ["OS/2"].xAvgCharWidth')
     parser.add_argument('-l', '--line-position', default=0, type=int, help='Fix ["OS/2"].underlinePosition, default is 0, underlinePosition is not modified.')
     parser.add_argument('-n', '--line-thickness', default=0, type=int, help='Fix ["OS/2"].underlineThickness, default is 0, underlineThickness is not modified.')
+    parser.add_argument('-a', '--advanceWidthMax', default=0, type=int, help='Fix ["hhea"].advanceWidthMax, default is 0, advanceWidthMax is not modified.')
 
     parser.add_argument('filename', type=str, help='Filename of a ttf font file.')
 
@@ -149,15 +179,13 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    print("%s, filename: %s" % (args, args.filename))
+    # print("%s, filename: %s" % (args, args.filename))
 
     if args.fix_width:
-        # print("fix_width")
-        fix_width(args.filename, args.fix_width, args.line_position, args.line_thickness)
+        fix_width(args.filename, args.fix_width, args.line_position, args.line_thickness, args.advanceWidthMax)
         sys.exit(0)
 
     if args.check:
-        # check后直接退出
         get_font_info(args.filename, args.verbose)
         sys.exit(0)
 
