@@ -4,8 +4,7 @@
 DisplayStrings = (
 "1",
 "/j.right",
-"/j.left",
-i
+"/j.left"
 );
 axes = (
 {
@@ -77742,11 +77741,11 @@ value = "5";
 },
 {
 name = underlineThickness;
-value = 72;
+value = 30;
 },
 {
 name = underlinePosition;
-value = -70;
+value = -300;
 },
 {
 name = "Name Table Entry";
