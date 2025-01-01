@@ -8,7 +8,8 @@ c,
 "/l.left",
 "/one.alt",
 "/one.left",
-"1"
+"1",
+"/uniE0A0"
 );
 axes = (
 {
@@ -106,6 +107,10 @@ value = "7 1; Copyright 2023 GitHub, Inc. (https://github.com/githubnext/monaspa
 {
 name = "Name Table Entry";
 value = "13 1; SIL Open Font License 1.1 https://github.com/githubnext/monaspace/blob/main/LICENSE";
+},
+{
+name = isFixedPitch;
+value = 1;
 }
 );
 date = "2024-12-16 21:53:39 +0000";
@@ -76945,11 +76950,11 @@ value = "5";
 },
 {
 name = underlineThickness;
-value = 72;
+value = 30;
 },
 {
 name = underlinePosition;
-value = -70;
+value = -300;
 },
 {
 name = "Name Table Entry";
@@ -77006,10 +77011,6 @@ value = "7 1; Copyright 2023 GitHub, Inc. (https://github.com/githubnext/monaspa
 {
 name = "Name Table Entry";
 value = "13 1; SIL Open Font License 1.1 https://github.com/githubnext/monaspace/blob/main/LICENSE";
-},
-{
-name = isFixedPitch;
-value = 1;
 }
 );
 instanceInterpolations = {
