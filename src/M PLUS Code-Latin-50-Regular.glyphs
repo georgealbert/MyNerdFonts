@@ -5,7 +5,8 @@ DisplayStrings = (
 l,
 t,
 i,
-r
+r,
+"į"
 );
 axes = (
 {
@@ -202,6 +203,34 @@ sub eight.lf by eight;
 sub nine.lf by nine;
 ";
 tag = tnum;
+},
+{
+code = "lookupflag IgnoreMarks;
+#sub less equal equal greater by less_equal_equal_greater;
+#sub less exclam hyphen hyphen by less_exclam_hyphen_hyphen;
+#sub less hyphen hyphen greater by less_hyphen_hyphen_greater;
+#sub asciitilde asciitilde greater by asciitilde_asciitilde_greater;
+#sub colon colon colon by colon_colon_colon;
+#sub equal equal equal by equal_equal_equal;
+#sub equal equal greater by equal_equal_greater;
+#sub equal exclam equal by equal_exclam_equal;
+#sub equal greater greater by equal_greater_greater;
+#sub equal less less by equal_less_less;
+#sub equal slash equal by equal_slash_equal;
+#sub exclam equal equal by exclam_equal_equal;
+#sub greater greater equal by greater_greater_equal;
+#sub hyphen hyphen greater by hyphen_hyphen_greater;
+#sub less asciitilde asciitilde by less_asciitilde_asciitilde;
+#sub less asciitilde greater by less_asciitilde_greater;
+#sub less bar greater by less_bar_greater;
+#sub less equal equal by less_equal_equal;
+#sub less equal greater by less_equal_greater;
+#sub less hyphen greater by less_hyphen_greater;
+#sub less hyphen hyphen by less_hyphen_hyphen;
+sub less equal by lessequal;
+sub greater equal by greaterequal;
+";
+tag = dlig;
 }
 );
 fontMaster = (
@@ -8631,7 +8660,7 @@ color = 6;
 glyphname = i;
 kernLeft = l;
 kernRight = l;
-lastChange = "2025-01-02 03:56:24 +0000";
+lastChange = "2025-01-02 06:35:54 +0000";
 layers = (
 {
 anchors = (
@@ -8645,18 +8674,18 @@ shapes = (
 {
 closed = 1;
 nodes = (
-(257,614,o),
-(285,640,o),
-(285,682,cs),
-(285,724,o),
-(257,750,o),
-(214,750,cs),
-(171,750,o),
-(143,724,o),
-(143,682,cs),
-(143,640,o),
-(171,614,o),
-(214,614,cs)
+(273,614,o),
+(301,640,o),
+(301,682,cs),
+(301,724,o),
+(273,750,o),
+(230,750,cs),
+(187,750,o),
+(159,724,o),
+(159,682,cs),
+(159,640,o),
+(187,614,o),
+(230,614,cs)
 );
 },
 {
@@ -10932,7 +10961,7 @@ color = 6;
 glyphname = r;
 kernLeft = n;
 kernRight = r;
-lastChange = "2025-01-02 04:11:40 +0000";
+lastChange = "2025-01-02 06:39:23 +0000";
 layers = (
 {
 layerId = "E27A6A66-A1F8-4E1B-8224-7C0FE77551F2";
@@ -10942,19 +10971,18 @@ closed = 1;
 nodes = (
 (126,0,l),
 (206,0,l),
-(206,450,l),
-(186,415,l),
-(260,442,o),
+(206,348,l),
+(186,296,l),
+(285,409,o),
 (364,460,o),
 (446,460,c),
 (446,530,l),
 (328,530,o),
-(269,492,o),
-(206,464,c),
-(195,464,l),
-(195,530,l),
-(38,530,l),
-(49,450,l),
+(275,486,o),
+(206,413,c),
+(206,530,l),
+(28,530,l),
+(28,450,l),
 (126,450,l)
 );
 }
