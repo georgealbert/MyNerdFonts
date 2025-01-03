@@ -10,7 +10,8 @@ c,
 "1",
 "0",
 "/zero.alt02",
-"/zero.alt01"
+"/zero.alt01",
+"/i.left"
 );
 axes = (
 {
@@ -25495,7 +25496,7 @@ width = 1000;
 },
 {
 glyphname = i.left;
-lastChange = "2024-12-31 02:25:17 +0000";
+lastChange = "2025-01-03 03:57:06 +0000";
 layers = (
 {
 layerId = "B3EB4CE9-FF8A-458C-8111-2882C1B7C642";
@@ -25504,7 +25505,6 @@ shapes = (
 closed = 1;
 nodes = (
 (505,1026,l),
-(486,1050,l),
 (130,1027,l),
 (130,877,l),
 (389,877,l),
