@@ -3,15 +3,14 @@
 .formatVersion = 3;
 DisplayStrings = (
 "1",
-"/j.right",
-"/j.left",
-i,
 "/one.alt",
-J,
 l,
 "/l.alt",
 f,
-t
+"/W.left",
+"/M.right",
+M,
+"/l.left"
 );
 axes = (
 {
