@@ -1,5 +1,48 @@
 # MyNerdFonts
 
+| 字体                    | upm  | char width | 说明                                                                                            |
+|:-----------------------:|:----:|:----------:|-------------------------------------------------------------------------------------------------|
+| 3270 SemiCondensed      | 2000 | 974        | 放弃。3种字体宽度里面最佳宽度，但是字形好丑                                                     |
+| `Agave Nerd Font`       | 2048 | 1024       | Mod。完美匹配，用小写t修改小写l。没有连字符，和Ubuntu的风格类似，略卡通，显示62行，厉害了       |
+| AnonymiceProNerdFont    | 2048 | 1118       | 放弃。太宽                                                                                      |
+| Arimo Nerd Font         |      | 不等宽     | 放弃。                                                                                          |
+| AurulentSans            | 1000 | 600        | 放弃。                                                                                          |
+| BitstromWeraNFM         | 2048 | 1233       | 放弃                                                                                            |
+| `CaskaydiaCove`         | 2048 | 1200       | 可用。压缩宽度到88.4%。字符卡通，较粗，在低分屏上估计效果更好                                   |
+| ComicShannsMono         | 1000 | 550        | 勉强可用。就是不太好看                                                                          |
+| CommitMono              | 1000 | 600(默认)  | 放弃。宽度可定制，但是字体不会变小，和Iosevka一样。改到540的话就挤在一起了                      |
+| CousineNFM              | 2048 | 1229       | 放弃                                                                                            |
+| DejaVuSansMNFM          | 2048 | 1233       | 放弃                                                                                            |
+| DepartureMono           |      |            | 放弃。monospaced pixel font不好看                                                               |
+| DroidSansMNFM           | 2048 | 1229       | 放弃。                                                                                          |
+| EnvyCodeRNerdFontMono   | 2048 | 1100       | 字形丑，上高再降低一点，括号太高了，需要修改il1，没有改的必要。UFO文件。宽度可以到1060          |
+| `FantaqueSans`          | 2048 | 1060       | 首选。fontforge可编辑sdfir文件                                                                  |
+| FiraCode原版            | 1950 | 1200       | 放弃。太宽了。基本上没法和中文等宽                                                              |
+| GeistMono v1.4.01       | 1000 | 600        | 放弃。                                                                                          |
+| Hasklig v1.2            | 1000 | 600        | 放弃。fork from Source Code Pro，怪不得这么宽                                                   |
+| `Iosevka`               | 1000 | 500        | 定制，width调整到520感觉稍微好点，                                                              |
+| `Inconsolata`           | 1000 | 500        | 完美。没有连字符                                                                                |
+| Lilex                   | 1000 | 600        | 放弃。扩展了IBM Plex Mono，增加连字符等                                                         |
+| `LektonNerdFont`        | 1000 | 500        | 凑合着用，但是需要调整行高，大、小、方括号太高了，到时候行距肯定很大，regular很细               |
+| Maple                   | 1000 | 600        | 放弃。600太宽了，中文字体都是1000，只能改到550，再小就不好看了                                  |
+| MartianMono Nerd Font   | 1000 | 700        | 放弃。                                                                                          |
+| MartianMono Condensed   | 1000 | 600        | 放弃。600还是宽啊，调整到540稍微挤了一点，regular的字重和medium一样，非常粗，不能用             |
+| `Monaspace Argon`       | 2000 | 1240       | 魔改。显示55行。使用Frozen.glyph进行修改有一些Nerd字符，打patch时不要用--careful参数            |
+| MonegoLigaturesNerdFont | 1000 | 600        | 放弃。各种宽度的字符，为什么？                                                                  |
+| `MonofurNerdFont`       | 2400 | 1200       | 很漂亮，但没有源码，regular的太细了，比LXGW还细一些，西文字体最好比中文字体粗一些。bold的太粗了 |
+| MonoidNerdFont          | 1536 | 1024       | 放弃。看着1024的宽度不错的，但是upm才1536，哈哈                                                 |
+| `MononokiNerdFontMono`  | 1024 | 575        | Mod。漂亮的字形。在原版基础上横向压缩到90%后，宽度是518，upm1024到1000                          |
+| `M Plus Code Latin 50`  | 1000 | 500        | Mod。glyph3修改。不错。修改CcSs和0的宽度，比Iosevka耐看，无连字符                               |
+| NotoSansMNerdFontMono   | 1000 | 600        | 放弃。不喜欢小写l                                                                               |
+| OverpassM NF            | 1000 | 616        | 放弃。修改redhat的字体，太宽了                                                                  |
+| PragmataProMonoLiga     | 2048 | 1024       | 可以的，就是有点瘦高，看着累。v0.829                                                            |
+| ProFontIIxNerdFont      | 1000 | 600        | 放弃。                                                                                          |
+| RecMonoLinearNerdFont   | 1000 | 600        | 放弃吧。都是600的宽度，没法用                                                                   |
+| `ShureTechMonoNerdFont` | 1000 | 540        | 勉强可用，宽度改到530。改为525会有点挤。字形有点小，而且不好看，没有连字符                      |
+| TinosNerdFont           |      | 不等宽     | 放弃。                                                                                          |
+| `Ubuntu mono NF`        | 1000 | 500        | 完美啊。还得是Ubuntu，十多年前的设计，美观、耐看。只有LXGW是绝配，缺点是没有连字符。            |
+| VictorMonoNerdFont      | 1000 | 600        | 放弃。绝不考虑                                                                                  |
+
 ## Fantasque Sans Mono Regular Nerd Font Complete Mono + LXGW WenKai Mono Lite Regular
 * 英文：Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf (Nerd Fonts 2.3.3)
 * 中文：LXGWWenKaiMonoLite-Regular v1.501 24/10/10
@@ -25,8 +68,6 @@ nerd-fonts上编译好的`FantasqueSansMNerdFontMono-Regular.ttf`(v3.3.0 2024.10
 ```
 option('LargeLineHeight', 'Large Line Height', Line(1700, 448)),
 ```
-
-不建议使用[`Warcraft-Font-Merger`](https://github.com/nowar-fonts/Warcraft-Font-Merger)进行合并，windows的emacs显示中文过宽，占2个中文字符的宽度。
 
 ## IosevkaTermSS12定制 + LXGW WenKai Mono Lite Regular
 
