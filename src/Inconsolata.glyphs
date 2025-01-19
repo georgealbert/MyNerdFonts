@@ -1,8 +1,7 @@
 {
 .appVersion = "3260";
 DisplayStrings = (
-l,
-"þ"
+d
 );
 classes = (
 {
@@ -13855,13 +13854,6 @@ name = top;
 position = "{274, 623}";
 }
 );
-hints = (
-{
-origin = "{0, 19}";
-type = Corner;
-name = _corner.rightSpur;
-}
-);
 layerId = "4196E4A4-01D0-4BE0-B812-9D3AF152A0E4";
 paths = (
 {
@@ -18585,13 +18577,6 @@ name = top;
 position = "{330, 623}";
 }
 );
-hints = (
-{
-origin = "{0, 15}";
-type = Corner;
-name = _corner.rightSpur;
-}
-);
 layerId = "4196E4A4-01D0-4BE0-B812-9D3AF152A0E4";
 paths = (
 {
@@ -19140,13 +19125,6 @@ nodes = (
 width = 500;
 },
 {
-hints = (
-{
-origin = "{0, 8}";
-type = Corner;
-name = _corner.rightSpur;
-}
-);
 layerId = "4196E4A4-01D0-4BE0-B812-9D3AF152A0E4";
 paths = (
 {
@@ -70851,13 +70829,6 @@ position = "{250, 0}";
 {
 name = top;
 position = "{104, 665}";
-}
-);
-hints = (
-{
-origin = "{0, 8}";
-type = Corner;
-name = _corner.rightSpur;
 }
 );
 layerId = "4196E4A4-01D0-4BE0-B812-9D3AF152A0E4";
@@ -141840,7 +141811,7 @@ nodes = (
 );
 }
 );
-width = 1500;
+width = 500;
 },
 {
 components = (
@@ -159977,34 +159948,34 @@ paths = (
 {
 closed = 1;
 nodes = (
-"232 -240 OFFCURVE",
-"292 -184 OFFCURVE",
-"292 -62 CURVE SMOOTH",
-"292 566 LINE SMOOTH",
-"292 670 OFFCURVE",
-"322 698 OFFCURVE",
-"377 698 CURVE SMOOTH",
-"395 698 OFFCURVE",
-"418 694 OFFCURVE",
-"436 687 CURVE",
-"436 748 LINE",
-"418 755 OFFCURVE",
-"398 760 OFFCURVE",
-"371 760 CURVE SMOOTH",
-"273 760 OFFCURVE",
-"220 702 OFFCURVE",
-"220 574 CURVE SMOOTH",
-"220 -55 LINE SMOOTH",
-"220 -143 OFFCURVE",
-"186 -178 OFFCURVE",
-"135 -178 CURVE SMOOTH",
-"111 -178 OFFCURVE",
-"91 -173 OFFCURVE",
-"73 -165 CURVE",
-"73 -227 LINE",
-"96 -236 OFFCURVE",
-"117 -240 OFFCURVE",
-"144 -240 CURVE SMOOTH"
+"232 -166 OFFCURVE",
+"292 -110 OFFCURVE",
+"292 12 CURVE SMOOTH",
+"292 471 LINE SMOOTH",
+"292 575 OFFCURVE",
+"322 603 OFFCURVE",
+"377 603 CURVE SMOOTH",
+"395 603 OFFCURVE",
+"418 599 OFFCURVE",
+"436 592 CURVE",
+"436 653 LINE",
+"418 660 OFFCURVE",
+"398 665 OFFCURVE",
+"371 665 CURVE SMOOTH",
+"273 665 OFFCURVE",
+"220 607 OFFCURVE",
+"220 479 CURVE SMOOTH",
+"220 19 LINE SMOOTH",
+"220 -69 OFFCURVE",
+"186 -104 OFFCURVE",
+"135 -104 CURVE SMOOTH",
+"111 -104 OFFCURVE",
+"91 -99 OFFCURVE",
+"73 -91 CURVE",
+"73 -153 LINE",
+"96 -162 OFFCURVE",
+"117 -166 OFFCURVE",
+"144 -166 CURVE SMOOTH"
 );
 }
 );
@@ -269578,7 +269549,6 @@ isBold = 1;
 name = Regular;
 },
 {
-exports = 0;
 customParameters = (
 {
 name = weightClass;

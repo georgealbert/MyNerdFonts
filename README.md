@@ -21,8 +21,8 @@
 | GeistMono v1.4.01       | 1000 | 600        | 放弃。                                                                                          |
 | Hasklig v1.2            | 1000 | 600        | 放弃。fork from Source Code Pro，怪不得这么宽                                                   |
 | `Iosevka`               | 1000 | 500        | 高度可定制，真的太强大，width调整到520，压缩字体高度                                            |
-| `Inconsolata`           | 1000 | 500        | 完美。修改了l的字形。没有连字符                                                                 |
-| Lilex                   | 1000 | 600        | 放弃。扩展了IBM Plex Mono，增加连字符等                                                         |
+| `Inconsolata`           | 1000 | 500        | 完美。修改带钩的字符，提升清晰度。没有连字符，用Medium的weigh 500                               |
+| Lilex                   | 1000 | 600        | 放弃。扩展了IBM Plex Mono，增加连字符等。                                                       |
 | `LektonNerdFont`        | 1000 | 500        | 凑合着用，但是需要调整行高，大、小、方括号太高了，到时候行距肯定很大，regular很细               |
 | Maple                   | 1000 | 600        | 放弃。600太宽了，中文字体都是1000，只能改到550，再小就不好看了                                  |
 | MartianMono Nerd Font   | 1000 | 700        | 放弃。                                                                                          |
