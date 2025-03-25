@@ -85,12 +85,12 @@ def get_font_info(src_file: str, is_verbose: bool):
     print("[\"OS/2\"].sCapHeight    = %d" % font["OS/2"].sCapHeight)
     print("[\"OS/2\"].sxHeight      = %d" % font["OS/2"].sxHeight)
 
-    print("")
+    # print("")
 
     print("[\"hhea\"].advanceWidthMax = %d" % font["hhea"].advanceWidthMax)
     print("[\"OS/2\"].xAvgCharWidth   = %d" % font["OS/2"].xAvgCharWidth)
 
-    print("")
+    # print("")
 
     # fonttools/blob/main/Lib/fontTools/cffLib/__init__.py
     # post = font["post"].__dict__
