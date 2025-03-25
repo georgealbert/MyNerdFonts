@@ -149,7 +149,7 @@ def change_char_width(src_font: str, match_width: int, target_width: int):
         except Exception as e:
             print(e)
 
-    target_font = src_font.split(".")[0] + "-w" + str(target_width) + ".ttf"
+    target_font = src_font.rsplit(".")[0] + "-w" + str(target_width) + ".ttf"
     font.save(target_font)
     font.close()
 
