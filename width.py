@@ -72,7 +72,7 @@ def get_font_info(src_file: str, is_verbose: bool):
     # for k,v in font["post"].__dict__.items():
     #     print("font[\"post\"].%s = %s" % (k, v))
 
-    print("[\"head\"].unitsPerEm = %d\n" % font["head"].unitsPerEm)
+    print("[\"head\"].unitsPerEm = %d" % font["head"].unitsPerEm)
 
     print("[\"OS/2\"].usWinAscent   = %d" % font["OS/2"].usWinAscent)
     print("[\"OS/2\"].usWinDescent  = %d" % font["OS/2"].usWinDescent)
