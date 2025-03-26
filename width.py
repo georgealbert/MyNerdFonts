@@ -112,9 +112,9 @@ def get_font_info(src_file: str, is_verbose: bool):
     sorted_values = sorted(chars.items(), key=lambda x: x[1])
 
     # for key, value in sorted_values.items():
-    print("\n[char width]\t[count]")
+    print("[char width]    [count]")
     for key, value in sorted_values:
-        print("%s\t\t%s" % (key, value))
+        print("%12s    %7s" % (key, value))
 
     font.close()
 
