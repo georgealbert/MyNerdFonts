@@ -1,0 +1,62 @@
+#!/usr/bin/fontforge
+
+# 准备 TrueType 字体时，用 AutoInstr() 或 AutoHint() 添加 hinting。
+
+# 在合并轮廓或清理图形时，使用 RemoveOverlap() 和 Simplify()。
+
+# 导出前用 RoundToInt() 和 AddExtrema() 标准化节点。
+
+Print("Open(" + $2 + ")");
+Open($2);
+
+Print("MergeFonts(" + $1 + ")");
+MergeFonts($1);
+
+Print("SetFontNames(" + $3 + ", " + $4 +  ", " + $5 + ", " + $6 + ");");
+SetFontNames($3, $4, $5, $6);
+
+Print("SetFontOrder(2); 控制轮廓的填充规则（Fill Rule），决定如何渲染重叠的路径。参数 2：表示使用 Even-Odd Fill Rule（奇偶填充规则），这是 TrueType 字体的标准填充方式。");
+SetFontOrder(2);
+
+Print("SelectAll();");
+SelectAll();
+
+
+Print("AutoInstr(); 自动为轮廓添加 TrueType 指令（hinting），以改善小字号时的显示效果。");
+AutoInstr();
+
+# AutoHint is slow.
+# 自动生成 hinting 信息，优化字体在低分辨率下的渲染质量。
+# Print("AutoHint();");
+# AutoHint();
+
+Print("AddExtrema(); 在曲线的极值点（如最高点、最低点、最左、最右点）添加节点，使轮廓更规范，便于后续处理。");
+AddExtrema();
+
+Print("CanonicalContours(); 将轮廓规范化，确保方向一致（如外轮廓顺时针、内轮廓逆时针），并移除冗余点。");
+CanonicalContours();
+
+Print("CanonicalStart(); 调整轮廓的起始点位置，使其符合标准（通常选择极值点作为起点），便于轮廓对比和优化。");
+CanonicalStart();
+
+# Too slow
+# 简化轮廓：
+# 
+# 第一个参数（-1）表示简化精度（负值表示自动计算阈值）。
+# 
+# 第二个参数（1）通常表示是否保留关键点（如极值点）。
+# 作用是减少多余节点，同时保持形状基本不变。
+# Print("Simplify(-1, 1); 简化轮廓");
+# Simplify(-1, 1);
+
+Print("RoundToInt(); 将节点的坐标四舍五入为整数值（例如，用于对齐像素网格，优化 hinting）。");
+RoundToInt();
+
+# Too slow，大概要跑2分钟，可能对字体显示也没什么用
+# Print("RemoveOverlap(); 移除轮廓中重叠的部分，合并相邻或交叉的路径，确保轮廓干净、无自交。");
+# RemoveOverlap();
+
+Print("Generate(" + $7 + ");");
+Generate($7);
+
+Close();
