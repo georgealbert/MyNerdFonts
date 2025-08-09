@@ -78,6 +78,8 @@ jobs:
           python mynerdfonts/width.py -f 500 InconsolataNerdFontMono-Retina.ttf -l -200 -n 30
 
           for STYLE in "Regular"; do
+            python width.py -f 500 ${FUSION_ID}-${STYLE}.ttf -l -200 -n 30 -a 1000
+
             gftools update-nameids "${FUSION_ID}-${STYLE}.ttf" \
               --uniqueid "$FUSION_ID-$STYLE-$NOW" \
               --designer "$FUSION_DEVELOPER" \
