@@ -27,8 +27,8 @@ jobs:
     steps:
       # Checkout repository into `mynerdfonts` sub directory
       - uses: actions/checkout@v4
-        with:
-          path: mynerdfonts
+        # with:
+        #   path: mynerdfonts
 
       - name: Install ttfautohint
         shell: bash
