@@ -77,7 +77,7 @@ jobs:
       - name: Fix fonts
         run: |
           # Fix font agvCharWidth.
-          python mynerdfonts/width.py -f 500 ${{INCONSOLATA_NFM}}  -l -200 -n 30
+          python mynerdfonts/width.py -f 500 ${{ env.INCONSOLATA_NFM }}  -l -200 -n 30
 
           for STYLE in "Regular"; do
             python mynerdfonts/width.py -f 500 ${FUSION_ID}-${STYLE}.ttf -l -200 -n 30 -a 1000
