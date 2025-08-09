@@ -30,11 +30,11 @@ jobs:
         with:
           path: mynerdfonts
 
-      - name: Install ttfautohint
-        shell: bash
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends ttfautohint
+      # - name: Install ttfautohint
+      #   shell: bash
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y --no-install-recommends ttfautohint
 
       - name: Install deps for Nerd Font Patcher
         run: sudo apt update && sudo apt install -y fontforge python3-fontforge python3-fonttools p7zip jq gftools
@@ -89,35 +89,35 @@ jobs:
             mv "${FUSION_ID}-${STYLE}.ttf.fix" "${FUSION_ID}-${STYLE}.ttf"
           done
 
-      # - name: Generate artifact info
-      #   run: |
-      #     echo 'release_body<<EOF' >> $GITHUB_ENV
-      #     cd iosevka && git log -1 --oneline >> $GITHUB_ENV
-      #     cd ..
+      - name: Generate artifact info
+        run: |
+          echo 'release_body<<EOF' >> $GITHUB_ENV
+          cd mynerdfonts && git log -1 --oneline >> $GITHUB_ENV
+          cd ..
 
-      #     # Print font info.
-      #     for STYLE in "Regular"; do
-      #       echo "" >> $GITHUB_ENV
-      #       echo "# Font Info:" >> $GITHUB_ENV
-      #       echo "* IosevkaTermSS05NerdFontMono-${STYLE}.ttf:" >> $GITHUB_ENV
-      #       echo "\`\`\`" >> $GITHUB_ENV
-      #       python width.py -c IosevkaTermSS05NerdFontMono-${STYLE}.ttf >> $GITHUB_ENV
-      #       echo "\`\`\`" >> $GITHUB_ENV
+          # Print font info.
+          for STYLE in "Regular"; do
+            # echo "" >> $GITHUB_ENV
+            # echo "# Font Info:" >> $GITHUB_ENV
+            # echo "* IosevkaTermSS05NerdFontMono-${STYLE}.ttf:" >> $GITHUB_ENV
+            # echo "\`\`\`" >> $GITHUB_ENV
+            # python width.py -c IosevkaTermSS05NerdFontMono-${STYLE}.ttf >> $GITHUB_ENV
+            # echo "\`\`\`" >> $GITHUB_ENV
 
-      #       # echo "" >> $GITHUB_ENV
-      #       # echo "* ${FILE_MERGED_WFM}-${STYLE}.ttf:" >> $GITHUB_ENV
-      #       # python mynerdfonts/width.py -c ${FILE_MERGED_WFM}-${STYLE}.ttf >> $GITHUB_ENV
+            # echo "" >> $GITHUB_ENV
+            # echo "* ${FILE_MERGED_WFM}-${STYLE}.ttf:" >> $GITHUB_ENV
+            # python mynerdfonts/width.py -c ${FILE_MERGED_WFM}-${STYLE}.ttf >> $GITHUB_ENV
 
-      #       echo "" >> $GITHUB_ENV
-      #       echo "* ${FUSION_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
-      #       echo "\`\`\`" >> $GITHUB_ENV
-      #       python mynerdfonts/width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
-      #       echo "\`\`\`" >> $GITHUB_ENV
-      #     done
+            echo "" >> $GITHUB_ENV
+            echo "* ${FUSION_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
+            echo "\`\`\`" >> $GITHUB_ENV
+            python mynerdfonts/width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
+            echo "\`\`\`" >> $GITHUB_ENV
+          done
 
-      #     echo 'EOF' >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
 
-      #     echo ${{ env.release_body }}
+          echo ${{ env.release_body }}
           
       - name: Publish Release
         id: publish_release
@@ -127,7 +127,7 @@ jobs:
           draft: false
           prerelease: false
           body: >
-            1. 合并修改后的Inconsolata-Retina和LXGW Lite。
+            1. 合并修改后的Inconsolata-Retina和LXGW WenKai Mono Lite字体。
 
             ${{ env.release_body }}
 
