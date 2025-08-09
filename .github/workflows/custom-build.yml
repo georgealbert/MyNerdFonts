@@ -18,6 +18,8 @@ env:
   INCONSOLATA_COPYRIGHT: Copyright 2006 The Inconsolata Project Authors (https://github.com/cyrealtype/Inconsolata)
   LXGW_COPYRIGHT: Copyright 2021-2024 LXGW (https://github.com/lxgw/LxgwWenKai-Lite) Copyright 2020 The Klee Project Authors (https://github.com/fontworks-fonts/Klee)
   LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.520/LXGWWenKaiMonoLite-Regular.ttf
+  INCONSOLATA_FONT: Inconsolata-Retina.ttf
+  INCONSOLATA_NFM_FONT: InconsolataNerdFontMono-Retina.ttf
 
 jobs:
   build:
@@ -49,7 +51,7 @@ jobs:
 
       - name: Patch font
         run: |
-          ./font-patcher --quiet --adjust-line-height --complete --careful -s mynerdfonts/fonts/Inconsolata-Retina.ttf
+          ./font-patcher --quiet --adjust-line-height --complete --careful -s mynerdfonts/fonts/${{INCONSOLATA_FONT}}
 
       - name: Download LXGWWenKaiMonoLite
         run: |
@@ -60,7 +62,7 @@ jobs:
           for STYLE in "Regular"; do
             fontforge "mynerdfonts/fuse_fonts.ff" \
               "LXGWWenKaiMonoLite-${STYLE}.ttf" \
-              "InconsolataNerdFontMono-Retina.ttf" \
+              "$INCONSOLATA_NFM_FONT" \
               "$FUSION_ID-$STYLE" \
               "$FUSION_NAME" \
               "$FUSION_NAME $STYLE" \
@@ -75,7 +77,7 @@ jobs:
       - name: Fix fonts
         run: |
           # Fix font agvCharWidth.
-          python mynerdfonts/width.py -f 500 InconsolataNerdFontMono-Retina.ttf -l -200 -n 30
+          python mynerdfonts/width.py -f 500 ${{INCONSOLATA_NFM_FONT}}  -l -200 -n 30
 
           for STYLE in "Regular"; do
             python mynerdfonts/width.py -f 500 ${FUSION_ID}-${STYLE}.ttf -l -200 -n 30 -a 1000
@@ -138,5 +140,5 @@ jobs:
             [Github Workflow #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
           files: |
-            InconsolataNerdFontMono-Retina.ttf
+            ${{ env.INCONSOLATA_NFM_FONT }}
             ${{ env.FUSION_ID }}-Regular.ttf
