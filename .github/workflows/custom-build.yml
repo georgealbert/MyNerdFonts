@@ -18,8 +18,8 @@ env:
   INCONSOLATA_COPYRIGHT: Copyright 2006 The Inconsolata Project Authors (https://github.com/cyrealtype/Inconsolata)
   LXGW_COPYRIGHT: Copyright 2021-2024 LXGW (https://github.com/lxgw/LxgwWenKai-Lite) Copyright 2020 The Klee Project Authors (https://github.com/fontworks-fonts/Klee)
   LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.520/LXGWWenKaiMonoLite-Regular.ttf
-  INCONSOLATA_FONT: Inconsolata-Retina.ttf
-  INCONSOLATA_NFM_FONT: InconsolataNerdFontMono-Retina.ttf
+  INCONSOLATA_FONT: "Inconsolata-Retina.ttf"
+  INCONSOLATA_NFM_FONT: "InconsolataNerdFontMono-Retina.ttf"
 
 jobs:
   build:
