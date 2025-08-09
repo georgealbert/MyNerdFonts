@@ -51,7 +51,7 @@ jobs:
 
       - name: Patch font
         run: |
-          ./font-patcher --quiet --adjust-line-height --complete --careful -s mynerdfonts/fonts/${{INCONSOLATA_FONT}}
+          ./font-patcher --quiet --adjust-line-height --complete --careful -s mynerdfonts/fonts/$INCONSOLATA_FONT
 
       - name: Download LXGWWenKaiMonoLite
         run: |
