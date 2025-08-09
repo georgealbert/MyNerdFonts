@@ -16,9 +16,9 @@ MergeFonts($1);
 # 中文（简体）可以用 0x804（"Chinese (PRC)"）。
 # 16 是 首选家族名（Preferred Family） 的 NameID。
 # 17 是 首选样式名（Preferred Subfamily） 的 NameID。
-Print("SetFontNames(0x409, 16", + $4 + ");");
+Print("SetFontNames(0x409, 16," + $4 + ");");
 SetTTFName(0x409, 16, $4)
-Print("SetFontNames(0x409, 17", + $6 + ");");
+Print("SetFontNames(0x409, 17," + $6 + ");");
 SetTTFName(0x409, 17, $6)
 
 Print("SetFontNames(" + $3 + ", " + $4 +  ", " + $5 + ", " + $6 + ");");
