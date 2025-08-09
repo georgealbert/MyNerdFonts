@@ -44,7 +44,7 @@ jobs:
           wget -q https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/FontPatcher.zip
           unzip FontPatcher.zip
 
-      - name: Patch Iosevka
+      - name: Patch nerdfont
         run: |
           ./font-patcher --quiet --adjust-line-height --complete --careful -s mynerdfonts/fonts/Inconsolata-Retina.ttf
 
