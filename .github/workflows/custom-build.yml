@@ -81,6 +81,7 @@ jobs:
             python mynerdfonts/width.py -f 500 ${FUSION_ID}-${STYLE}.ttf -l -200 -n 30 -a 1000
 
             gftools update-nameids "${FUSION_ID}-${STYLE}.ttf" \
+              --family_name "$FUSION_NAME" \
               --uniqueid "$FUSION_ID-$STYLE-$NOW" \
               --designer "$FUSION_DEVELOPER" \
               --manufacturer "$FUSION_DEVELOPER" \
@@ -88,9 +89,10 @@ jobs:
               --version "$NOW" \
               --copyright "$(echo -e "$INCONSOLATA_COPYRIGHT\n$LXGW_COPYRIGHT\n$FUSION_COPYRIGHT")" \
               --license "$FUSION_LICENSE" \
-              --urlvendor "https://github.com/georgealbert/Iosevka" \
+              --urlvendor "https://github.com/georgealbert/MyNerdFonts" \
               --urldesigner "https://www.albertzhou.net" \
               --urllicense "https://openfontlicense.org"
+
             mv "${FUSION_ID}-${STYLE}.ttf.fix" "${FUSION_ID}-${STYLE}.ttf"
           done
 
@@ -108,10 +110,6 @@ jobs:
             # echo "\`\`\`" >> $GITHUB_ENV
             # python width.py -c IosevkaTermSS05NerdFontMono-${STYLE}.ttf >> $GITHUB_ENV
             # echo "\`\`\`" >> $GITHUB_ENV
-
-            # echo "" >> $GITHUB_ENV
-            # echo "* ${FILE_MERGED_WFM}-${STYLE}.ttf:" >> $GITHUB_ENV
-            # python mynerdfonts/width.py -c ${FILE_MERGED_WFM}-${STYLE}.ttf >> $GITHUB_ENV
 
             echo "" >> $GITHUB_ENV
             echo "* ${FUSION_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
