@@ -57,7 +57,7 @@ jobs:
           for STYLE in "Regular"; do
             fontforge "mynerdfonts/fuse_fonts.ff" \
               "LXGWWenKaiMonoLite-${STYLE}.ttf" \
-              "InconsolataNerdFontMono-Retina.ttf"
+              "InconsolataNerdFontMono-Retina.ttf" \
               "$FUSION_ID-$STYLE" \
               "$FUSION_NAME" \
               "$FUSION_NAME $STYLE" \
