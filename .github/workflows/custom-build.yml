@@ -44,9 +44,9 @@ jobs:
           wget -q https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/FontPatcher.zip
           unzip FontPatcher.zip
 
-      - name: Patch Iosevka
+      - name: Patch nerdfont
         run: |
-          ./font-patcher --quiet --adjust-line-height --complete --careful -s fonts/Inconsolata-Retina.ttf
+          ./font-patcher --quiet --adjust-line-height --complete --careful -s mynerdfonts/fonts/Inconsolata-Retina.ttf
 
       - name: Download LXGWWenKaiMonoLite
         run: |
@@ -55,7 +55,7 @@ jobs:
       - name: Merge font by FontForge
         run: |
           for STYLE in "Regular"; do
-            fontforge "fuse_fonts.ff" \
+            fontforge "mynerdfonts/fuse_fonts.ff" \
               "LXGWWenKaiMonoLite-${STYLE}.ttf" \
               "InconsolataNerdFontMono-Retina.ttf"
               "$FUSION_ID-$STYLE" \
@@ -72,7 +72,7 @@ jobs:
       - name: Fix fonts
         run: |
           # Fix font agvCharWidth.
-          python width.py -f 500 InconsolataNerdFontMono-Retina.ttf -l -200 -n 30
+          python mynerdfonts/width.py -f 500 InconsolataNerdFontMono-Retina.ttf -l -200 -n 30
 
           for STYLE in "Regular"; do
             gftools update-nameids "${FUSION_ID}-${STYLE}.ttf" \
@@ -106,12 +106,12 @@ jobs:
 
       #       # echo "" >> $GITHUB_ENV
       #       # echo "* ${FILE_MERGED_WFM}-${STYLE}.ttf:" >> $GITHUB_ENV
-      #       # python width.py -c ${FILE_MERGED_WFM}-${STYLE}.ttf >> $GITHUB_ENV
+      #       # python mynerdfonts/width.py -c ${FILE_MERGED_WFM}-${STYLE}.ttf >> $GITHUB_ENV
 
       #       echo "" >> $GITHUB_ENV
       #       echo "* ${FUSION_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
       #       echo "\`\`\`" >> $GITHUB_ENV
-      #       python width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
+      #       python mynerdfonts/width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
       #       echo "\`\`\`" >> $GITHUB_ENV
       #     done
 
