@@ -17,7 +17,7 @@ env:
   IOSEVKA_COPYRIGHT: Copyright 2015-2025, Renzhi Li (aka. Belleve Invis, belleve@typeof.net).
   INCONSOLATA_COPYRIGHT: Copyright 2006 The Inconsolata Project Authors (https://github.com/cyrealtype/Inconsolata)
   LXGW_COPYRIGHT: Copyright 2021-2024 LXGW (https://github.com/lxgw/LxgwWenKai-Lite) Copyright 2020 The Klee Project Authors (https://github.com/fontworks-fonts/Klee)
-  LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.520/LXGWWenKaiMonoLite-Regular.ttf
+  LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.521/LXGWWenKaiMonoLite-Regular.ttf
   INCONSOLATA_FONT: "Inconsolata-Retina.ttf"
   INCONSOLATA_NFM: "InconsolataNerdFontMono-Retina.ttf"
 
@@ -34,12 +34,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: mynerdfonts
-
-      # - name: Install ttfautohint
-      #   shell: bash
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y --no-install-recommends ttfautohint
 
       - name: Install deps for Nerd Font Patcher
         run: sudo apt update && sudo apt install -y fontforge python3-fontforge python3-fonttools p7zip jq gftools
