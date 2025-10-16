@@ -14,6 +14,7 @@ env:
   FUSION_DESCRIPTION: "The free and open-source font fused with Iosevka and LXGW WenKai"
   FUSION_COPYRIGHT: Copyright 2025 Albert (${{ github.server_url }}/${{ github.repository }})
   FUSION_LICENSE: "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
+  FUSION_VERSION: Inconsolata v3.100; LXGW v1.521;
   IOSEVKA_COPYRIGHT: Copyright 2015-2025, Renzhi Li (aka. Belleve Invis, belleve@typeof.net).
   INCONSOLATA_COPYRIGHT: Copyright 2006 The Inconsolata Project Authors (https://github.com/cyrealtype/Inconsolata)
   LXGW_COPYRIGHT: Copyright 2021-2024 LXGW (https://github.com/lxgw/LxgwWenKai-Lite) Copyright 2020 The Klee Project Authors (https://github.com/fontworks-fonts/Klee)
@@ -81,7 +82,7 @@ jobs:
               --designer "$FUSION_DEVELOPER" \
               --manufacturer "$FUSION_DEVELOPER" \
               --trademark "$FUSION_NAME" \
-              --version "$NOW" \
+              --version "$NOW; $FUSION_VERSION" \
               --copyright "$(echo -e "$INCONSOLATA_COPYRIGHT\n$LXGW_COPYRIGHT\n$FUSION_COPYRIGHT")" \
               --license "$FUSION_LICENSE" \
               --urlvendor "https://github.com/georgealbert/MyNerdFonts" \
