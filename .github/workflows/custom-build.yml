@@ -128,6 +128,10 @@ jobs:
           body: >
             1. 合并修改后的Inconsolata-Retina和LXGW WenKai Mono Lite字体。
 
+
+            ![InconsolataNFM+LXGWWenKaiMonoLite-Regular](https://github.com/georgealbert/MyNerdFonts/blob/main/screenshots/InconsolataNFM%2BLXGWWenKaiMonoLite-Regular.png)
+
+            
             ${{ env.release_body }}
 
 
