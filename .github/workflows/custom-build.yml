@@ -21,6 +21,10 @@ env:
   LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.521/LXGWWenKaiMonoLite-Regular.ttf
   INCONSOLATA_FONT: "Inconsolata-Retina.ttf"
   INCONSOLATA_NFM: "InconsolataNerdFontMono-Retina.ttf"
+  IOSEVKA_NFM_URL: "https://github.com/georgealbert/Iosevka/releases/download/v20260103.120305/IosevkaTermSS05NerdFontMono-Regular.ttf"
+  IOSEVKA_NFM: "IosevkaTermSS05NerdFontMono-Regular.ttf"
+  SARASA_TERM_URL: "https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.35/SarasaTermSC-TTF-1.0.35.7z"
+  SARASA_TERM: ""
 
 jobs:
   build:
@@ -50,7 +54,14 @@ jobs:
 
       - name: Download LXGWWenKaiMonoLite
         run: |
+          wget -q ${IOSEVKA_NFM_URL}
+
+      - name: Download SarasaTermSC-TTF and IosevkaTermSS05NerdFontMono-Regular.ttf
+        run: |
           wget -q ${LXGW_WENKAI_LITE}
+          wget -q ${SARASA_TERM_URL}
+          7z x SarasaTermSC*.7z
+          ls -ltr *.ttf
 
       - name: Merge font by FontForge
         run: |
