@@ -21,10 +21,13 @@ env:
   LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.521/LXGWWenKaiMonoLite-Regular.ttf
   INCONSOLATA_FONT: "Inconsolata-Retina.ttf"
   INCONSOLATA_NFM: "InconsolataNerdFontMono-Retina.ttf"
+
   IOSEVKA_NFM_URL: "https://github.com/georgealbert/Iosevka/releases/download/v20260103.120305/IosevkaTermSS05NerdFontMono-Regular.ttf"
   IOSEVKA_NFM: "IosevkaTermSS05NerdFontMono-Regular.ttf"
   SARASA_TERM_URL: "https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.35/SarasaTermSC-TTF-1.0.35.7z"
-  SARASA_TERM: ""
+  SARASA_TERM: "SarasaTermSC-Regular.ttf"
+  SARASA_IOSEVKA_NAME: "IosevkaSS05NFM + SarasaTermSC"
+  SARASA_IOSEVKA_ID: "IosevkaSS05NFM+SarasaTermSC"
 
 jobs:
   build:
@@ -74,6 +77,15 @@ jobs:
               "$FUSION_NAME $STYLE" \
               "$STYLE" \
               "$FUSION_ID-${STYLE}.ttf"
+
+            fontforge "mynerdfonts/fuse_fonts.ff" \
+              "SarasaTermSC-${STYLE}.ttf" \
+              "IosevkaTermSS05NerdFontMono-${STYLE}.ttf"
+              "$SARASA_IOSEVKA_ID-$STYLE" \
+              "$SARASA_IOSEVKA_NAME" \
+              "$SARASA_IOSEVKA_NAME $STYLE" \
+              "$STYLE" \
+              "$SARASA_IOSEVKA_ID-${STYLE}.ttf"
           done
 
       - name: Set tag name env
@@ -103,6 +115,14 @@ jobs:
             mv "${FUSION_ID}-${STYLE}.ttf.fix" "${FUSION_ID}-${STYLE}.ttf"
           done
 
+          # Fix IosevkaSS05NFM + SarasaTermSC
+          for STYLE in "Regular"; do
+            python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}.ttf -o 1000 -t 1040 > /dev/null
+            python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}-w1040.ttf -o 500 -t 520 > /dev/null
+            mv ${SARASA_IOSEVKA_ID}-${STYLE}-w1040-w520.ttf ${SARASA_IOSEVKA_ID}-${STYLE}.ttf
+            python mynerdfonts/width.py -f 520 ${SARASA_IOSEVKA_ID}-${STYLE}.ttf -l -200 -n 30 -a 1040
+          done
+
       - name: Generate artifact info
         run: |
           echo 'release_body<<EOF' >> $GITHUB_ENV
@@ -111,17 +131,16 @@ jobs:
 
           # Print font info.
           for STYLE in "Regular"; do
-            # echo "" >> $GITHUB_ENV
-            # echo "# Font Info:" >> $GITHUB_ENV
-            # echo "* IosevkaTermSS05NerdFontMono-${STYLE}.ttf:" >> $GITHUB_ENV
-            # echo "\`\`\`" >> $GITHUB_ENV
-            # python width.py -c IosevkaTermSS05NerdFontMono-${STYLE}.ttf >> $GITHUB_ENV
-            # echo "\`\`\`" >> $GITHUB_ENV
-
             echo "" >> $GITHUB_ENV
             echo "* ${FUSION_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
             echo "\`\`\`" >> $GITHUB_ENV
             python mynerdfonts/width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
+            echo "\`\`\`" >> $GITHUB_ENV
+
+            echo "" >> $GITHUB_ENV
+            echo "* ${SARASA_IOSEVKA_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
+            echo "\`\`\`" >> $GITHUB_ENV
+            python mynerdfonts/width.py -c ${SARASA_IOSEVKA_ID}-${STYLE}.ttf >> $GITHUB_ENV
             echo "\`\`\`" >> $GITHUB_ENV
           done
 
@@ -138,6 +157,7 @@ jobs:
           prerelease: false
           body: >
             1. 合并修改后的Inconsolata-Retina和LXGW WenKai Mono Lite字体。
+            2. 合并修改后的IosevkaTermSS05NFM和SarasaTermSC字体。
 
 
             ![InconsolataNFM+LXGWWenKaiMonoLite-Regular](https://github.com/georgealbert/MyNerdFonts/blob/main/screenshots/InconsolataNFM%2BLXGWWenKaiMonoLite-Regular.png)
@@ -152,3 +172,4 @@ jobs:
           files: |
             ${{ env.INCONSOLATA_NFM }}
             ${{ env.FUSION_ID }}-Regular.ttf
+            ${{ env.SARASA_IOSEVKA_ID }}-Regular.ttf
