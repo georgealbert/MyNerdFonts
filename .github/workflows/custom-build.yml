@@ -82,8 +82,9 @@ jobs:
               "SarasaTermSC-${STYLE}.ttf" \
               "IosevkaTermSS05NerdFontMono-${STYLE}.ttf"
               "${SARASA_IOSEVKA_ID}-$STYLE" \
-              "${SARASA_IOSEVKA_NAME}" \
-              "${SARASA_IOSEVKA_NAME} ${STYLE}" \
+              # "${SARASA_IOSEVKA_NAME}" \
+              "IosevkaSS05NFM + SarasaTermSC" \
+              "IosevkaSS05NFM + SarasaTermSC ${STYLE}" \
               "${STYLE}" \
               "${SARASA_IOSEVKA_ID}-${STYLE}.ttf"
           done
