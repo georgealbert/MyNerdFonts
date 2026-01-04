@@ -22,8 +22,11 @@ env:
   INCONSOLATA_FONT: "Inconsolata-Retina.ttf"
   INCONSOLATA_NFM: "InconsolataNerdFontMono-Retina.ttf"
 
-  IOSEVKA_NFM_URL: "https://github.com/georgealbert/Iosevka/releases/download/v20260103.120305/IosevkaTermSS05NerdFontMono-Regular.ttf"
-  IOSEVKA_NFM: IosevkaTermSS05NerdFontMono-Regular.ttf
+  # IOSEVKA_NFM_URL: "https://github.com/georgealbert/Iosevka/releases/download/v20260103.120305/IosevkaTermSS05NerdFontMono-Regular.ttf"
+  IOSEVKA_NFM_URL: "https://github.com/georgealbert/Iosevka/releases/download/v20260103.120305/IosevkaTermSs05-Regular.ttf"
+  
+  # IOSEVKA_NFM: IosevkaTermSS05NerdFontMono-Regular.ttf
+  # IOSEVKA_NFM: IosevkaTermSs05-Regular.ttf
   SARASA_TERM_URL: https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.35/SarasaTermSC-TTF-1.0.35.7z
   SARASA_TERM: SarasaTermSC-Regular.ttf
   SARASA_IOSEVKA_NAME: IosevkaSS05NFM + SarasaTermSC
@@ -78,9 +81,12 @@ jobs:
               "$STYLE" \
               "$FUSION_ID-${STYLE}.ttf"
 
+            # 合并IosevkaTermSS05NerdFontMono-regular.ttf的时候，glyph太多了.
+            # The 'sfnt' format is currently limited to 65535 glyphs, and your font has 70720 of them. 
             fontforge "mynerdfonts/fuse_fonts.ff" \
               "SarasaTermSC-${STYLE}.ttf" \
-              "IosevkaTermSS05NerdFontMono-${STYLE}.ttf" \
+              # "IosevkaTermSS05NerdFontMono-${STYLE}.ttf" \
+              "IosevkaTermSs05-${STYLE}.ttf" \
               "${SARASA_IOSEVKA_ID}-$STYLE" \
               "${SARASA_IOSEVKA_NAME}" \
               "${SARASA_IOSEVKA_NAME} ${STYLE}" \
