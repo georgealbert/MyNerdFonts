@@ -121,6 +121,11 @@ jobs:
             mv "${FUSION_ID}-${STYLE}.ttf.fix" "${FUSION_ID}-${STYLE}.ttf"
           done
 
+      - name: Patch IosevkaSS05NFM + SarasaTermSC
+        run: |
+          ./font-patcher --quiet --adjust-line-height --complete --careful -s ${SARASA_IOSEVKA_ID}-${STYLE}.ttf
+          ls -ltr *.ttf
+
       - name: Fix IosevkaSS05NFM + SarasaTermSC
         run: |
           ls -ltr *.ttf
