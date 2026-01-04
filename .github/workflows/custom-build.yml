@@ -23,11 +23,11 @@ env:
   INCONSOLATA_NFM: "InconsolataNerdFontMono-Retina.ttf"
 
   IOSEVKA_NFM_URL: "https://github.com/georgealbert/Iosevka/releases/download/v20260103.120305/IosevkaTermSS05NerdFontMono-Regular.ttf"
-  IOSEVKA_NFM: "IosevkaTermSS05NerdFontMono-Regular.ttf"
-  SARASA_TERM_URL: "https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.35/SarasaTermSC-TTF-1.0.35.7z"
-  SARASA_TERM: "SarasaTermSC-Regular.ttf"
-  SARASA_IOSEVKA_NAME: "IosevkaSS05NFM + SarasaTermSC"
-  SARASA_IOSEVKA_ID: "IosevkaSS05NFM+SarasaTermSC"
+  IOSEVKA_NFM: IosevkaTermSS05NerdFontMono-Regular.ttf
+  SARASA_TERM_URL: https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.35/SarasaTermSC-TTF-1.0.35.7z
+  SARASA_TERM: SarasaTermSC-Regular.ttf
+  SARASA_IOSEVKA_NAME: IosevkaSS05NFM + SarasaTermSC
+  SARASA_IOSEVKA_ID: IosevkaSS05NFM+SarasaTermSC
 
 jobs:
   build:
@@ -78,11 +78,11 @@ jobs:
               "$STYLE" \
               "$FUSION_ID-${STYLE}.ttf"
 
+              # "${SARASA_IOSEVKA_NAME}" \
             fontforge "mynerdfonts/fuse_fonts.ff" \
               "SarasaTermSC-${STYLE}.ttf" \
               "IosevkaTermSS05NerdFontMono-${STYLE}.ttf"
               "${SARASA_IOSEVKA_ID}-$STYLE" \
-              # "${SARASA_IOSEVKA_NAME}" \
               "IosevkaSS05NFM + SarasaTermSC" \
               "IosevkaSS05NFM + SarasaTermSC ${STYLE}" \
               "${STYLE}" \
