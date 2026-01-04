@@ -81,11 +81,11 @@ jobs:
               "$STYLE" \
               "$FUSION_ID-${STYLE}.ttf"
 
+              # "IosevkaTermSS05NerdFontMono-${STYLE}.ttf" \
             # 合并IosevkaTermSS05NerdFontMono-regular.ttf的时候，glyph太多了.
             # The 'sfnt' format is currently limited to 65535 glyphs, and your font has 70720 of them. 
             fontforge "mynerdfonts/fuse_fonts.ff" \
               "SarasaTermSC-${STYLE}.ttf" \
-              # "IosevkaTermSS05NerdFontMono-${STYLE}.ttf" \
               "IosevkaTermSs05-${STYLE}.ttf" \
               "${SARASA_IOSEVKA_ID}-$STYLE" \
               "${SARASA_IOSEVKA_NAME}" \
