@@ -115,7 +115,9 @@ jobs:
             mv "${FUSION_ID}-${STYLE}.ttf.fix" "${FUSION_ID}-${STYLE}.ttf"
           done
 
-          # Fix IosevkaSS05NFM + SarasaTermSC
+      - name: Fix IosevkaSS05NFM + SarasaTermSC
+        run: |
+          ls -ltr *.ttf
           for STYLE in "Regular"; do
             python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}.ttf -o 1000 -t 1040 > /dev/null
             python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}-w1040.ttf -o 500 -t 520 > /dev/null
