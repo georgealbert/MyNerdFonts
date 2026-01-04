@@ -78,13 +78,12 @@ jobs:
               "$STYLE" \
               "$FUSION_ID-${STYLE}.ttf"
 
-              # "${SARASA_IOSEVKA_NAME}" \
             fontforge "mynerdfonts/fuse_fonts.ff" \
               "SarasaTermSC-${STYLE}.ttf" \
-              "IosevkaTermSS05NerdFontMono-${STYLE}.ttf"
+              "IosevkaTermSS05NerdFontMono-${STYLE}.ttf" \
               "${SARASA_IOSEVKA_ID}-$STYLE" \
-              "IosevkaSS05NFM + SarasaTermSC" \
-              "IosevkaSS05NFM + SarasaTermSC ${STYLE}" \
+              "${SARASA_IOSEVKA_NAME}" \
+              "${SARASA_IOSEVKA_NAME} ${STYLE}" \
               "${STYLE}" \
               "${SARASA_IOSEVKA_ID}-${STYLE}.ttf"
           done
