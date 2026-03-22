@@ -18,7 +18,7 @@ env:
   IOSEVKA_COPYRIGHT: Copyright 2015-2025, Renzhi Li (aka. Belleve Invis, belleve@typeof.net).
   INCONSOLATA_COPYRIGHT: Copyright 2006 The Inconsolata Project Authors (https://github.com/cyrealtype/Inconsolata)
   LXGW_COPYRIGHT: Copyright 2021-2024 LXGW (https://github.com/lxgw/LxgwWenKai-Lite) Copyright 2020 The Klee Project Authors (https://github.com/fontworks-fonts/Klee)
-  LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.521/LXGWWenKaiMonoLite-Regular.ttf
+  LXGW_WENKAI_LITE: https://github.com/lxgw/LxgwWenKai-Lite/releases/download/v1.522/LXGWWenKaiMonoLite-Regular.ttf
   INCONSOLATA_FONT: "Inconsolata-Retina.ttf"
   INCONSOLATA_NFM: "InconsolataNerdFontMono-Retina.ttf"
 
@@ -65,8 +65,8 @@ jobs:
       - name: Download SarasaTermSC-TTF and IosevkaTermSS05NerdFontMono-Regular.ttf
         run: |
           wget -q ${LXGW_WENKAI_LITE}
-          wget -q ${SARASA_TERM_URL}
-          7z x SarasaTermSC*.7z
+          # wget -q ${SARASA_TERM_URL}
+          # 7z x SarasaTermSC*.7z
           ls -ltr *.ttf
 
       - name: Merge font by FontForge
@@ -84,14 +84,14 @@ jobs:
               # "IosevkaTermSS05NerdFontMono-${STYLE}.ttf" \
             # 合并IosevkaTermSS05NerdFontMono-regular.ttf的时候，glyph太多了.
             # The 'sfnt' format is currently limited to 65535 glyphs, and your font has 70720 of them. 
-            fontforge "mynerdfonts/fuse_fonts.ff" \
-              "SarasaTermSC-${STYLE}.ttf" \
-              "IosevkaTermSs05-${STYLE}.ttf" \
-              "${SARASA_IOSEVKA_ID}-$STYLE" \
-              "${SARASA_IOSEVKA_NAME}" \
-              "${SARASA_IOSEVKA_NAME} ${STYLE}" \
-              "${STYLE}" \
-              "${SARASA_IOSEVKA_ID}-${STYLE}.ttf"
+            # fontforge "mynerdfonts/fuse_fonts.ff" \
+            #   "SarasaTermSC-${STYLE}.ttf" \
+            #   "IosevkaTermSs05-${STYLE}.ttf" \
+            #   "${SARASA_IOSEVKA_ID}-$STYLE" \
+            #   "${SARASA_IOSEVKA_NAME}" \
+            #   "${SARASA_IOSEVKA_NAME} ${STYLE}" \
+            #   "${STYLE}" \
+            #   "${SARASA_IOSEVKA_ID}-${STYLE}.ttf"
           done
 
       - name: Set tag name env
@@ -121,23 +121,23 @@ jobs:
             mv "${FUSION_ID}-${STYLE}.ttf.fix" "${FUSION_ID}-${STYLE}.ttf"
           done
 
-      - name: Patch IosevkaSS05NFM + SarasaTermSC
-        run: |
-          ls -ltr *.ttf
-          for STYLE in "Regular"; do
-            ./font-patcher --quiet --adjust-line-height --complete --careful -s ${SARASA_IOSEVKA_ID}-${STYLE}.ttf
-          done
-          ls -ltr *.ttf
+      # - name: Patch IosevkaSS05NFM + SarasaTermSC
+      #   run: |
+      #     ls -ltr *.ttf
+      #     for STYLE in "Regular"; do
+      #       ./font-patcher --quiet --adjust-line-height --complete --careful -s ${SARASA_IOSEVKA_ID}-${STYLE}.ttf
+      #     done
+      #     ls -ltr *.ttf
 
-      - name: Fix IosevkaSS05NFM + SarasaTermSC
-        run: |
-          ls -ltr *.ttf
-          for STYLE in "Regular"; do
-            python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}.ttf -o 1000 -t 1040 > /dev/null
-            python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}-w1040.ttf -o 500 -t 520 > /dev/null
-            mv ${SARASA_IOSEVKA_ID}-${STYLE}-w1040-w520.ttf ${SARASA_IOSEVKA_ID}-${STYLE}.ttf
-            python mynerdfonts/width.py -f 520 ${SARASA_IOSEVKA_ID}-${STYLE}.ttf -l -200 -n 30 -a 1040
-          done
+      # - name: Fix IosevkaSS05NFM + SarasaTermSC
+      #   run: |
+      #     ls -ltr *.ttf
+      #     for STYLE in "Regular"; do
+      #       python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}.ttf -o 1000 -t 1040 > /dev/null
+      #       python mynerdfonts/width.py -m ${SARASA_IOSEVKA_ID}-${STYLE}-w1040.ttf -o 500 -t 520 > /dev/null
+      #       mv ${SARASA_IOSEVKA_ID}-${STYLE}-w1040-w520.ttf ${SARASA_IOSEVKA_ID}-${STYLE}.ttf
+      #       python mynerdfonts/width.py -f 520 ${SARASA_IOSEVKA_ID}-${STYLE}.ttf -l -200 -n 30 -a 1040
+      #     done
 
       - name: Generate artifact info
         run: |
@@ -153,11 +153,11 @@ jobs:
             python mynerdfonts/width.py -c ${FUSION_ID}-${STYLE}.ttf >> $GITHUB_ENV
             echo "\`\`\`" >> $GITHUB_ENV
 
-            echo "" >> $GITHUB_ENV
-            echo "* ${SARASA_IOSEVKA_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
-            echo "\`\`\`" >> $GITHUB_ENV
-            python mynerdfonts/width.py -c ${SARASA_IOSEVKA_ID}-${STYLE}.ttf >> $GITHUB_ENV
-            echo "\`\`\`" >> $GITHUB_ENV
+            # echo "" >> $GITHUB_ENV
+            # echo "* ${SARASA_IOSEVKA_ID}-${STYLE}.ttf:" >> $GITHUB_ENV
+            # echo "\`\`\`" >> $GITHUB_ENV
+            # python mynerdfonts/width.py -c ${SARASA_IOSEVKA_ID}-${STYLE}.ttf >> $GITHUB_ENV
+            # echo "\`\`\`" >> $GITHUB_ENV
           done
 
           echo 'EOF' >> $GITHUB_ENV
@@ -188,4 +188,4 @@ jobs:
           files: |
             ${{ env.INCONSOLATA_NFM }}
             ${{ env.FUSION_ID }}-Regular.ttf
-            ${{ env.SARASA_IOSEVKA_ID }}-Regular.ttf
+            # ${{ env.SARASA_IOSEVKA_ID }}-Regular.ttf
